@@ -1,4 +1,6 @@
 //ALLAH IS ALMIGHTY
+//BISMILLAH
+
 #include<bits/stdc++.h>
 using namespace std;
 string word(string s){

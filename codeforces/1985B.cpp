@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+int solve (){
+    int n,ans;
+    cin>>n;
+    (n == 3) ? ans = 3 : ans = 2;
+
+    return ans;
+}
+int main(){
+    int test;
+    cin>>test;
+    while(test--){
+        int result = solve();
+        cout<<result<<endl;
+    }
+
+}

@@ -1,18 +1,23 @@
 #include<iostream>
 using namespace std;
+
+int solve(int arr[]){
+    int r,l,i,sum=0;
+    cin>>l>>r;
+    for(i = l - 1 ; i < r ; i++){
+        sum = sum + arr[i];
+    }
+    return sum;
+}
 int main(){
-	int n,q,l,r;
-	cin>>n>>q;
-	int arr[n];
-	for(int i = 0 ; i < n ; i++){
-		cin>>arr[i];
-	}
-	for(int j = 1 ; j <= q ; j++){
-		cin>>l>>r;
-		int sum = 0 ;
-		for(int k = l-1 ; k < r ; k++){
-			sum =sum + arr[k];
-		}
-		cout<<sum<<endl;
-	}
+    int n,q,i,l,r;
+    cin>>n>>q;
+    int arr[n];
+    for(i = 0 ; i < n ; i++){
+        cin>>arr[i];
+    }
+    while(q--){
+        int result = solve(arr);
+        cout<<result<<endl;
+    }
 }

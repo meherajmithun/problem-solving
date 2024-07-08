@@ -1,3 +1,9 @@
+/*
+  IN THE NAME OF ALLAH
+  Author: Meheraj Mithun
+  Bangladesh University Of Businness and Teachnology
+*/
+
 #include<iostream>
 using namespace std;
 

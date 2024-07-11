@@ -7,13 +7,13 @@
 #include<iostream>
 using namespace std;
 
-int loser(){
-	int a,b,c,d,count=0;
-	cin>>a>>b>>c>>d;
-	if(a < b) count++;
-	if(a < c) count++;
-	if(a < d) count++;
-	return count;
+string loser(){
+	int a,b,c;
+	cin>>a>>b>>c;
+	if(a + b >= 10) return "YES";
+	else if(a + c >= 10) return "YES";
+	else if(b + c >= 10) return "YES";
+	else return "NO";
 }
 int main(){
 	int t;

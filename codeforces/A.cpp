@@ -7,20 +7,22 @@
 #include<iostream>
 using namespace std;
 
-void loser(){
-	int a,b,c;
-	cin>>a>>b>>c;
-	if(a + b == c){
-		cout<<"+"<<endl;
+int loser(){
+	int i,count=0;
+	string s1 = "codeforces";
+	string s2;
+	cin>>s2;
+	for(i = 0 ; i < 10 ; i++){
+		if(s1[i] != s2[i]){
+			count++;
+		}
 	}
-	else {
-		cout<<"-"<<endl;
-	}
+	return count;
 }
 int main(){
 	int t;
 	cin>>t;
 	while(t--){
-		loser();
+		cout<<loser()<<endl;
 	}
 }

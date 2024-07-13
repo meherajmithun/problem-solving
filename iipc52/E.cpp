@@ -1,21 +1,24 @@
-#include<iostream>
+/*
+  IN THE NAME OF ALLAH
+  Author: Meheraj Mithun
+  Bangladesh University Of Businness and Teachnology
+*/
+
+#include<bits/stdc++.h>
 using namespace std;
 
 int main(){
-	int n;
-	cin>>n;
+	int n,i,x,j;
 	string s;
-	cin>>s;
-	int t;
 	char a,b;
-	cin>>t;
-	while(t--){
+	cin>>n>>s>>x;
+	for(i = 0 ; i < x ; i++){
 		cin>>a>>b;
-		for(i = 0 ; i < n ; i++){
-			if(s[i] == a){
-				s[i] = b;
+		for(j = 0 ; j < n ; j++){
+			if(s[j] == a){
+				s[j] = b;
 			}
 		}
 	}
-	cout<<s<<endl;
+	cout<<s;
 }

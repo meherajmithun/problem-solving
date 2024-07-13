@@ -1,23 +1,28 @@
-#include<iostream>
+/*
+  IN THE NAME OF ALLAH
+  Author: Meheraj Mithun
+  Bangladesh University Of Businness and Teachnology
+*/
+
+#include<bits/stdc++.h>
 using namespace std;
 
-int solve(int arr[]){
-    int r,l,i,sum=0;
-    cin>>l>>r;
-    for(i = l - 1 ; i < r ; i++){
+void solve(int arr[]){
+    int q,r,sum=0;
+    cin>>q>>r;
+    for(int i = q - 1 ; i < r ; i++){
         sum = sum + arr[i];
     }
-    return sum;
+    cout<<sum<<endl;
 }
 int main(){
-    int n,q,i,l,r;
-    cin>>n>>q;
+    int n,m;
+    cin>>n>>m;
     int arr[n];
-    for(i = 0 ; i < n ; i++){
+    for(int i = 0 ; i < n ; i++){
         cin>>arr[i];
     }
-    while(q--){
-        int result = solve(arr);
-        cout<<result<<endl;
+    while(m--){
+        solve(arr);
     }
 }

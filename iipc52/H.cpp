@@ -7,7 +7,27 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int main(){
+int  main(){
+	int n,a;
+	cin>>n;
+	vector<int>o;
+	vector<int>e;
+	for(int i = 0 ; i < n ; i++){
+		cin>>a;
+		if(a % 2 == 0){
+			e.push_back(a);
+		}
+		else {
+			o.push_back(a);
+		}
+	}
+	sort(o.begin() , o.end() , greater<int>());
+	sort(e.begin() ,e.end());
+	for(auto u : o) cout<<u<<" ";
+	for(auto u : e) cout<<u<<" ";
+}
+
+/*int main(){
 	int x,n,l,i,j=0,k=0;
 	cin>>n;
 	int arr1[n],arr2[n];
@@ -31,3 +51,4 @@ int main(){
         cout<<arr2[a]<<" ";
     }
 }
+*/

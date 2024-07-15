@@ -8,15 +8,14 @@
 using namespace std;
 
 int solve(){
-	int i,a[4],b[4];
-	for(i = 0; i < 4; i++){
-		cin>>a[i]>>b[i];
-	}
-	int x = a[2]-a[0];
-	int y = b[2]-b[0];
-
-	int m = sqrt(x*x+y*y);
-	return m*m;
+    int a1,b1,a2,b2,a3,b3,a4,b4;
+    cin>>a1>>b1>>a2>>b2>>a3>>b3>>a4>>b4;
+    int ans = 1;
+    if(a1 == a3) ans *= abs(b1 - b3);
+    else ans *= abs(a1 - a3);
+    if(a2 == a4) ans *= abs(b2 - b4);
+    else ans *= abs(a2 - a4);
+    return ans;
 }
 int main(){
 	int t;

@@ -4,28 +4,31 @@
   Bangladesh University Of Businness and Teachnology
 */
 
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
-string loser(){
-	string s;
-	cin>>s;
-	int i,count_a=0,count_b=0;
-	for(i = 0 ; i < s.size() ; i++){
-		if(s[i] == 'A'){
-			count_a++;
+void solve(){
+	int n,x;
+	cin>>n;
+	for(int i = 97; i < 123; i++){
+		for(int j = 97; j < 123; j++){
+			for(int k = 97; k < 123; k++){
+				x = (i - 96) + (j - 96) + ( k - 96);
+				if(x == n){
+					cout<<(char)i<<char(j)<<(char)k<<endl;
+					break;
+				}
+				if(x == n) break;
+			}
+			if(x == n) break;
 		}
-		else {
-			count_b++;
-		}
+		if(x == n) break;
 	}
-	if(count_a > count_b) return "A";
-	else return "B";
 }
 int main(){
 	int t;
 	cin>>t;
 	while(t--){
-		cout<<loser()<<endl;
+		solve();
 	}
 }

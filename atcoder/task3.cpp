@@ -15,5 +15,5 @@ int main(){
 	for(i = 0; i < 3; i++){
 		if(a[i] == 1) count++;
 	}
-	cout<<count<<endl;
+	cout<<count;
 }

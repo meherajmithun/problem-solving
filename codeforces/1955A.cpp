@@ -3,29 +3,32 @@
   Author: Meheraj Mithun
   Bangladesh University Of Businness and Teachnology
 */
+
 #include<bits/stdc++.h>
 using namespace std;
 
-int loser(){
+void solve(){
     int n,a,b;
-    cin>>n>>a>>b;
-    if(n == 2){
-        if(b <= n*a) return b;
-        else return n*a;
+    cin>>n >>a >>b;
+    if(n * a < b) cout<<n*a<<endl;
+    else {
+        int x = n / 2;
+        int y = n % 2;
+        int z = y * b;
+        if(y != 0){
+            if(a + b < n * a) cout<<a+b<<endl;
+            else cout<<n * a<<endl;
+        }
+        else {
+            if(n * a < x * b) cout<<n*a<<endl;
+            else cout<<x*b<<endl;
+        }
     }
-    else if ( n >= 3){
-        int x = n - 2;
-        int y = a * x + b;
-        int z = n * a;
-        if(y <= z) return y;
-        else return z;
-    }
-    else return a;
 }
 int main(){
     int t;
     cin>>t;
     while(t--){
-        cout<<loser()<<endl;
+        solve();
     }
 }

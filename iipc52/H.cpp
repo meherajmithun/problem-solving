@@ -22,7 +22,7 @@ int  main(){
 		}
 	}
 	sort(o.begin() , o.end() , greater<int>());
-	sort(e.begin() ,e.end());
+	sort(e.begin() , e.end());
 	for(auto u : o) cout<<u<<" ";
 	for(auto u : e) cout<<u<<" ";
 }
@@ -42,7 +42,7 @@ int  main(){
 			k++;
 		}
 	}
-	sort(arr1, arr1 + j, greater<int>());
+    sort(arr1, arr1 + j, greater<int>());
     for(l = 0 ; l < j ; l++){
         cout<<arr1[l]<<" ";
     }

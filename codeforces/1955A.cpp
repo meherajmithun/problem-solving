@@ -10,17 +10,17 @@ using namespace std;
 void solve(){
     int n,a,b;
     cin>>n >>a >>b;
-    if(n * a < b) cout<<n*a<<endl;
+    if(n * a <= b) cout<<n*a<<endl;
     else {
         int x = n / 2;
         int y = n % 2;
         int z = y * b;
         if(y != 0){
-            if(a + b < n * a) cout<<a+b<<endl;
+            if(a + b <= n * a) cout<<a+b<<endl;
             else cout<<n * a<<endl;
         }
         else {
-            if(n * a < x * b) cout<<n*a<<endl;
+            if(n * a <= x * b) cout<<n*a<<endl;
             else cout<<x*b<<endl;
         }
     }

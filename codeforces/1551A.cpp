@@ -19,6 +19,9 @@ void solve(){
             cout<<i+1 <<" " <<i<<endl;
             break;
         }
+        else if((i * 1) + ((i + 1) * 2) == n){
+            cout<<i <<" "<<i+1<<endl;
+        }
         i++;
     }
 }

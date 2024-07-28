@@ -9,23 +9,34 @@
 #define endl '\n'
 using namespace std;
 
+bool isvowel(char c){
+    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+}
 int main(){
+    int cnt[3] = { 5 , 7 , 5};
+    vector<string>v;
     string s;
-    int i , j , k,count = 0,m_count=0;
-    for(i = 0; i < 3; i++){
-        cin>>s;
-        for(j = 0; j < s.size(); j++){
-            if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u'){
-                count++;
-            }
+    for(int i = 0; i < 3; i++){
+        char c;
+        cin >> c;
+        getline(cin , s);
+        
+        s = c + s;
+        
+        v.push_back( s );
+    }
+    for(int i = 0; i < 3; i++){
+        
+        int c = 0;
+        
+        for(auto u : v[i]){
+            if( isvowel(u) ) c++;
         }
-        if(i == 0 || i == 2){
-            if(count == 5) m_count++;
-        }
-        else if(i == 1){
-            if(count == 7) m_count++;
+        
+        if(c != cnt[i]){
+            cout << "NO" <<endl;
+            return 0;
         }
     }
-    if(m_count == 3) cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
+    cout << "YES" << endl;
 }

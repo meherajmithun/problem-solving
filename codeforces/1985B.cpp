@@ -4,8 +4,9 @@
   Bangladesh University Of Businness and Teachnology
 */
 
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
+
 int solve (){
     int n,ans;
     cin>>n;

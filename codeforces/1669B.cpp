@@ -1,35 +1,37 @@
 /*
   IN THE NAME OF ALLAH
   Author: Meheraj Mithun
-  Bangladesh University Of Businness and Teachnology
+  Bangladesh University Of Business and Technology
 */
 
-#include<iostream>
-#include<algorithm>
+#include<bits/stdc++.h>
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl '\n'
+
 using namespace std;
 
-void loser(){
-    int n,count=0,a;
-    cin>>n;
-    int arr[n];
-    for(int i = 0 ; i < n ; i++) cin>>arr[i];
-    sort(arr , arr + n);
-    for(int i = 0 ; i < n ; i++){
-        if(arr[i+1] == arr[i]){
-            a = arr[i];
-            count++;
-            if(count == 3){
-                cout<<a<<endl;
-                break;
-            }
+int solve() {
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    map<int, int> freq;
+    for(int i = 0; i < n; i++) {
+        cin >> v[i];
+        freq[v[i]]++;
+    }
+    for(auto &u : freq) {
+        if(u.second >= 3) {
+            return u.first;
         }
     }
-    if(count < 3) cout<<-1<<endl;
-}
-int main(){
-    int test;
-    cin>>test;
-    while(test--){
-        loser();
+    return -1;
+} 
+
+int main() {
+    optimize();
+    int T;
+    cin >> T;
+    while(T--) {
+        cout << solve() << endl;
     }
 }

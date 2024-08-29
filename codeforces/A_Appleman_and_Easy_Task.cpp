@@ -15,17 +15,15 @@ using namespace std;
 int main(){
     fastIO;
     int n ; cin >> n;
-    vector<int>v(n);
-    set<int>s;
+    vector<string>v(n);
+    int cnt = 0; int ans = 0;
+    for(int i = 0; i < n; i++) cin >> v[i];
+
     for(int i = 0; i < n; i++){
-        int a; cin >> a;
-        s.insert(a);
+        for(int j = 0; j < n; j++){
+            if(v[i][j] == 'x') cnt++;
+        }
     }
-    if(s.size() < 2){
-        cout<<"NO"<<endl;
-        return 0;
-    }
-    else {
-        cout<<*(++s.begin())<<endl;
-    }
+    if(cnt % 2 == 0) cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
 }

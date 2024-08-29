@@ -14,18 +14,15 @@ using namespace std;
 
 int main(){
     fastIO;
-    int n ; cin >> n;
-    vector<int>v(n);
-    set<int>s;
+    int n; cin >> n;
+    int k; cin >> k;
+    string s; cin >> s;
+    char x = s[k-2];
+    int cnt = 0;
     for(int i = 0; i < n; i++){
-        int a; cin >> a;
-        s.insert(a);
+        if(s[i] == x){
+            cnt += k-1;
+        }
     }
-    if(s.size() < 2){
-        cout<<"NO"<<endl;
-        return 0;
-    }
-    else {
-        cout<<*(++s.begin())<<endl;
-    }
+    cout<<cnt+1<<endl;
 }

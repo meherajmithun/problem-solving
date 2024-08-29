@@ -14,18 +14,11 @@ using namespace std;
 
 int main(){
     fastIO;
-    int n ; cin >> n;
-    vector<int>v(n);
-    set<int>s;
-    for(int i = 0; i < n; i++){
-        int a; cin >> a;
-        s.insert(a);
-    }
-    if(s.size() < 2){
-        cout<<"NO"<<endl;
-        return 0;
-    }
-    else {
-        cout<<*(++s.begin())<<endl;
-    }
+    int n,a,b;
+    cin >>n >> a >> b;
+    int min_position = a + 1;
+    int max_position = n - b;
+    int ans = max_position - min_position;
+    cout<<ans<<endl;
+    return 0;
 }

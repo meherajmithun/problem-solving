@@ -13,14 +13,20 @@ using namespace std;
 #define yes (cout << "YES\n")
 
 void solve(){
-    int n ; cin >> n;
-    int k ; cin >> k;
-    vector<int>v(n);
-    vector<int>v2(n);
-    for(int i = 0;i < n; i++){
-        cin >> v[i];
-        v2[i] = v[i];
+    string s ; cin >> s;
+    int cost = 0;
+    int j = 0;
+    for(int i = 0; i < s.size(); i++){
+        if(s[i] == '1'){
+            j = i + 1;
+            while(s[j] != '0'){
+                j++;
+            }
+            sort(s.begin()+i,s.end()+j);
+        }
+        cost += abs(i-j)+1;
     }
+    cout<<cost<<endl;
 }
 
 int main(){

@@ -15,20 +15,11 @@ using namespace std;
 void solve(){
     int n ; cin >> n;
     string s; cin >> s;
-    int f = 0;
-    s.erase(s.begin());
-    s.pop_back();
-    while ( !s.empty()){
-        if(f == 0){
-            s.pop_back();
-            f = 1;
-        }
-        else {
-            s.erase(s.begin());
-            f = 0;
-        }
+    int cntU = 0;
+    for(int i = 0; i < n; i++){
+        if(s[i] == 'U') cntU++;
     }
-    if(f) yes;
+    if(cntU % 2 != 0) yes;
     else no;
 }
 

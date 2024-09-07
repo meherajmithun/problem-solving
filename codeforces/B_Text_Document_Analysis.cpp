@@ -19,28 +19,25 @@ typedef vector<pll> vll;
 #define no cout << "NO\n"
 #define yes cout << "YES\n"
 
-string solve(){
-    ll n, k;
-    cin >> n >> k;
-    
-    if (n == k) {
-        return "YES";
-    }
-    
-    if (n % 2 == 0) {
-        return "YES";
-    }
-    
-    if ((n - k) % 2 == 0 && (n - k) >= 2) {
-        return "YES";
-    }
-    
-    return "NO";
-}
-int main(){
-    int T;
-    cin >> T;
-    while(T--){
-       cout << solve() <<endl;
+int main() {
+    fastIO;
+    int n ; cin >> n;
+    string s ; cin >> s;
+    vi v1 ; vi v2;
+    int j = 0;
+    int cntu = 0;
+    for(int i = 0; i < n; i++){
+        cntu = 0;
+        if(s[i] == 95){
+            j = i + 1;
+            while(j < n and (s[j] != 95) and s[j] != 40 and s[j] != 41){
+                if((s[j] > 64 and s[j] < 91) || (s[j] > 96 and s[j] < 123)){
+                    cntu++;
+                }
+                j++;
+            }
+            i = j - 1;
+            v1.pb(cntu);
+        }
     }
 }

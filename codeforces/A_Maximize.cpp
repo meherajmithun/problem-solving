@@ -20,26 +20,8 @@ typedef vector<pll> vll;
 #define yes cout << "YES\n"
 
 void solve() {
-    ll n,m;
-    cin >> n >> m;
-    vector<char>v(n);
-    map<char,ll>mp;
-    for(ll i = 0 ; i < n ; i++){
-        cin >> v[i];
-        mp[v[i]]++;   
-    }
-    ll ans  = 0;
-    while(m--){
-        for(char i = 'A'; i <= 'G' ; i++){
-            if(mp[i]==0){
-                ans++;
-            }else{
-                mp[i]--;
-            }
-        }
-    }
-    cout << ans << endl;
-   
+   int n ; cin >> n;
+   cout<<n-1<<endl;
 }
 
 int main() {

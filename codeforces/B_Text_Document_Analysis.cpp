@@ -40,4 +40,18 @@ int main() {
             v1.pb(cntu);
         }
     }
+    int cntp = 0;
+    for(int i = 0; i < n; i++){
+        cntp = 0;
+        if(s[i] == 40){
+            j = i + 1;
+            while(j < n and s[j] != 95 and s[j] != 41){
+                j++;
+            }
+            cntp++;
+            if(s[j] == 95){
+                
+            }
+        }
+    }
 }

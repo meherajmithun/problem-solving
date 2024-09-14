@@ -25,13 +25,14 @@ void solve() {
    vector<int> v(n);
    vector<int> v2;
    vector<int>v3;
-
    int query;
 
    for (int i = 0; i < n; i++) cin >> v[i];
    for (int i = 0; i < q; i++) {
     cin >> query;
-    v2.pb(query);
+    if(v2.empty() || v2.back() > query){
+      v2.pb(query);
+    }
    }
 
    for(int i = 0; i < n; i++){

@@ -21,29 +21,38 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-   int n,k;
-   cin >> n >> k;
-   vl v(n+1);
-   for(int i = 0; i < n; i++) cin >> v[i];
+   int n ; cin >> n;
+   vl v(n);
 
-   int cnt = 0;
-   int remove = 0;
+   int sum = 0;
+   bool flag = false;
 
-   sort(all(v));
-
-   for(int i = 1; i < n+1; i++){
-    if(abs(v[i] - v[i-1]) <= k){
-        cnt += i+1;
-    }
-    else {
-        remove += cnt;
-        cnt = 0;
-    }
-    cout<<abs(v[i]-v[i-1])<<" ";
+   for(int i = 0; i < n; i++){
+    cin >> v[i];
+    sum += v[i];
+    
+    if(v[i] % 3 == 1) flag = true;
+    
    }
-  // cout<<remove<<endl;
 
-   cout<<endl;
+   if(sum % 3 == 2){
+    cout<<1<<endl;
+    return ;
+   }
+
+   else if(sum % 3 == 0){
+    cout<<0<<endl;
+    return ;
+   }
+
+   else if(flag){
+    cout<<1<<endl;
+    return ;
+   }
+   
+   else{
+    cout<<2<<endl;
+   }
 }
 
 int32_t main() {

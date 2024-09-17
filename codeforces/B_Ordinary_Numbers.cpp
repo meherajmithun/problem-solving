@@ -21,29 +21,17 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-   int n,k;
-   cin >> n >> k;
-   vl v(n+1);
-   for(int i = 0; i < n; i++) cin >> v[i];
-
-   int cnt = 0;
-   int remove = 0;
-
-   sort(all(v));
-
-   for(int i = 1; i < n+1; i++){
-    if(abs(v[i] - v[i-1]) <= k){
-        cnt += i+1;
-    }
-    else {
-        remove += cnt;
-        cnt = 0;
-    }
-    cout<<abs(v[i]-v[i-1])<<" ";
+   int n ; cin >> n;
+   
+   int temp , cnt = 0;
+   for(int digit = 1; digit <= 9; digit++){
+       temp = digit;
+       while( temp <= n){
+           temp = temp * 10 + digit;
+           cnt++;
+       }
    }
-  // cout<<remove<<endl;
-
-   cout<<endl;
+   cout<<cnt<<endl;
 }
 
 int32_t main() {

@@ -28,18 +28,24 @@ void solve() {
    }
    else {
     if((a > b) || (a > c) || ( c > d) || (b > d)){
+
         int ta=a,tb=b,tc=c,td=d;
         a=tc,b=ta,c=td,d=tb;
+
         if((a > b) || (a > c) || ( c > d) || (b > d)){
+
             ta=a,tb=b,tc=c,td=d;
             a=tc,b=ta,c=td,d=tb;
 
             //cout<<a<<b<<c<<d<<endl;;
 
             if((a > b) || (a > c) || ( c > d) || (b > d)){
+
                 ta=a,tb=b,tc=c,td=d;
                 a=tc,b=ta,c=td,d=tb;
+
                 if((a > b) || (a > c) || ( c > d) || (b > d)){
+                    
                     no;
                     return ;
                 }

@@ -20,43 +20,27 @@ typedef vector<pll> vll;
 #define yes cout << "YES\n"
 #define int long long
 
-void solve() {
-   int n  ; cin >> n;
-   vl v(n);
-   for(int i = 0; i < n; i++) cin >> v[i];
-
-   if(n == 1){
-    cout<<v[0]<<endl;
-    return ;
-   }
-
-    int x = INT_MIN;
-   while( v.size() > 2){
-    
-    sort(all(v));
-    x = v[0];
-
-    v.erase(v.begin());
-
-    for(int i = 0; i < v.size(); i++){
-        v[i] -= x;
-    }
-
-   }
-
-    int y = v[0];
-    (x > y) ? cout<<x : cout<<y;
-
-    //for(auto u : v) cout<<u<<" ";
-    cout<<endl;
-}
-
 int32_t main() {
     control;
-    int T;
-    cin >> T;
-    while (T--) {
-        solve();
+    int n ; cin >> n;
+    int k ; cin >> k;
+    int cnt = 0;
+    vi v;
+    for(int i = 0; i < n; i++){
+        int a ; cin >> a;
+
+        v.pb( a );
     }
-    return 0;
+   // sort(v.begin() , v.end());
+
+   // int x = unique(v.begin() , v.end()) - v.begin();
+   
+   int jamela = v[k-1];
+
+   for(int i = 0; i < n; i++){
+    if(v[i] >= jamela and v[i] > 0) {
+        cnt++;
+    }
+   }
+    cout<< cnt<<endl;
 }

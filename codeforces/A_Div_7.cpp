@@ -21,34 +21,26 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-   int n  ; cin >> n;
-   vl v(n);
-   for(int i = 0; i < n; i++) cin >> v[i];
+   int n ; cin >> n;
+   if(n % 7 == 0){
+    cout<<n<<endl;
 
-   if(n == 1){
-    cout<<v[0]<<endl;
-    return ;
    }
 
-    int x = INT_MIN;
-   while( v.size() > 2){
-    
-    sort(all(v));
-    x = v[0];
-
-    v.erase(v.begin());
-
-    for(int i = 0; i < v.size(); i++){
-        v[i] -= x;
+   else{
+    int x = n / 7 ;
+    int y = (x+1) * 7;
+    x = x * 7;
+    int ans1 = abs(x-n);
+    int ans2 = abs(y-n);
+    if(ans1 > ans2){
+        cout<<y<<endl;
     }
-
+    else{
+        cout<<x<<endl;
+    }
    }
-
-    int y = v[0];
-    (x > y) ? cout<<x : cout<<y;
-
-    //for(auto u : v) cout<<u<<" ";
-    cout<<endl;
+   
 }
 
 int32_t main() {

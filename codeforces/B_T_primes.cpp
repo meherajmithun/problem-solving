@@ -12,28 +12,42 @@ typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 typedef vector<pii> vii;
 typedef vector<pll> vll;
-#define fastIO ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(a) (a).begin(),(a).end()
+#define control ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define all(v) v.begin(),v.end()
 #define endl '\n'
 #define pb push_back
 #define no cout << "NO\n"
 #define yes cout << "YES\n"
+#define int long long
 
-int main() {
-    fastIO;
-    ll n ; cin >> n;
-    while(n--){
-        ll cnt = 0;
-        ll a; cin >> a;
-        for(ll j = 1; j <= sqrt(a); j++){
-            if(a % j == 0){
-                cnt++;
-                if(a / j != j){
-                    cnt++;
-                }
-            }
+void solve() {
+   int a; cin >> a;
+   if(a == 1){
+    no;
+    return ;
+   }
+   int borgo = sqrtl( a );
+
+   if(borgo * borgo == a){
+
+    for(int i = 2; i < borgo; i++){
+        if(a % i == 0){
+            no;
+            return ;
         }
-        if(cnt == 3) yes;
-        else no;
     }
+    yes;
+    return ;
+   }
+   no;
+}
+
+int32_t main() {
+    control;
+    int T;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+    return 0;
 }

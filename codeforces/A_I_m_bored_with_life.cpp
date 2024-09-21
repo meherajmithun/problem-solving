@@ -12,23 +12,27 @@ typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 typedef vector<pii> vii;
 typedef vector<pll> vll;
-#define fastIO ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(a) (a).begin(),(a).end()
+#define control ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define all(v) v.begin(),v.end()
 #define endl '\n'
 #define pb push_back
 #define no cout << "NO\n"
 #define yes cout << "YES\n"
+#define int long long
 
-int main(){
-    ll a,b,fact1=1,fact2=1;
+int hoibo(int n){
+    int patha = 1;
+    for(int i = 2; i <= n; i++){
+        patha *= i;
+    }
+    return patha;
+}
+int32_t main() {
+    control;
+    int a , b ;
     cin >> a >> b;
-    for(ll i = 1; i <= a; i++){
-        fact1 = fact1 * i;
-    }
-    for(ll i = 1; i <= b; i++){
-        fact2 = fact2 * i;
-    }
-    if(fact1 > fact2) cout<<fact2<<endl;
-    else cout << fact1<<endl;
-    
+
+    int bejal = min(a,b);
+    int ans = hoibo(bejal);
+    cout<<ans<<endl;
 }

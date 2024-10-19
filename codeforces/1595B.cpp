@@ -21,12 +21,18 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    string s ; cin >> s;
+    int ans = s.size();
+    int n = s.size();
+    for(int i = 0; i < n; i++){
+        for(int j = i+1 ; j < n; j++){
+            int ans1 = (s[i] - '0') * 10 + s[j] - '0';
+            if(ans1 % 25 == 0){
+                    ans = min(ans , j-i-1+n-1-j);
+            }
+        }
     }
+    cout<<ans<<endl;
 }
 
 int32_t main() {

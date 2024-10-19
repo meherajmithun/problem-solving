@@ -22,11 +22,14 @@ typedef vector<pll> vll;
 
 void solve() {
     int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    int cntp = 0;
+    int cntm = 0;
+    for(int i = 0; i < n; i++){
+        char c ; cin >> c;
+        if(c == '+') cntp++;
+        else cntm++;
     }
+    cout<<abs(cntp - cntm)<<endl;
 }
 
 int32_t main() {

@@ -22,11 +22,13 @@ typedef vector<pll> vll;
 
 void solve() {
     int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    int ans = (n*(n+1))/2;
+    int kecal = 0;
+    for(int i = 1; i <= n; i *= 2){
+        kecal += i;
     }
+    int result = ans - 2*kecal;
+    cout<<result<<endl;
 }
 
 int32_t main() {

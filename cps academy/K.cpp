@@ -22,11 +22,21 @@ typedef vector<pll> vll;
 
 void solve() {
     int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    vi v(n);
+    vi v2(n);
+    for(int i = 0; i < n; i++){
+        cin >> v[i];
+        v2[i] = v[i];
     }
+    sort(all(v2));
+    int l = 0 , r =n-1;
+    for(int i = 0; i < n; i++){
+        if(v[i] != v2[i]){
+            l = i;
+            break;
+        }
+    }
+    cout<<v2[r]-v2[0]<<endl;
 }
 
 int32_t main() {

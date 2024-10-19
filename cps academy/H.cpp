@@ -18,15 +18,21 @@ typedef vector<pll> vll;
 #define pb push_back
 #define no cout << "NO\n"
 #define yes cout << "YES\n"
-#define int long long
+//#define int long long
 
 void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    int n , k; cin >> n >> k;
+    vi v(n);
+    for(auto &u : v) cin >> u;
+   // for(int i = 0; i < n; i++) cin >> v[i];
+    for(int i = 0 ; i < n - 1 && k; i++){
+        int mn = min(v[i], k ) ;
+        k -= mn ;
+        v[i] -= mn ;
+        v[n-1] += mn;
     }
+    for(auto u : v) cout<<u<<" ";
+    cout<<endl;
 }
 
 int32_t main() {

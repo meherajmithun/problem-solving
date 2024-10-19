@@ -21,11 +21,27 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    int n , query; cin >> n >> query;
+    vi v;
+    vi pre(n+1);
+    int sum = 0;
+    for(int i = 1; i <= n; i++){
+        int a ; cin >> a;
+        v.pb(a);
+        pre[i] = pre[i-1] + a;
+        sum += a;
+    }
+   // cout<<sum<<endl;
+    while(query--){
+        int l , r , k;
+        cin >> l >> r >> k;
+        int psum = pre[r] - pre[l-1];
+        int ksum = (sum-psum);
+        ksum +=(r-l+1)*k;
+        //cout<<ksum<<endl;
+        if(ksum % 2 != 0) yes;
+        else no;
+
     }
 }
 

@@ -21,12 +21,26 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    int n , x ; cin >> n >> x;
+    vi v(n);
+    for(int i = 0; i < n; i++) cin >> v[i];
+    int cnt = 0;
+    sort(v.rbegin() , v.rend());
+    int a = v[0];
+    int y = v[x-1];
+    while(1){
+        if(v[0] != a){
+            sort(v.rbegin() , v.rend());
+            a = v[0];
+        }
+
+        if(v[x-1] == 0) break;
+        for(int i = 0; i < x; i++){
+            v[i]--;
+        }
+        cnt++;
     }
+    cout<<cnt<<endl;
 }
 
 int32_t main() {

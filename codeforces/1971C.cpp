@@ -21,12 +21,17 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    int a , b , c , d;
+    cin >> a >> b >> c >> d;
+    int mn = min(c,d);
+    int mx = max(c,d);
+    for(int i = mn; i <= mx; i++){
+        if(i == a or i == b ){
+            cout<<"YES"<<endl;
+            return ;
+        }
     }
+    cout<<"NO"<<endl;
 }
 
 int32_t main() {

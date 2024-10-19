@@ -21,12 +21,19 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    int n , k;
+    cin >> n >> k;
+    int cnt = 0;
+    if(k == 1){
+        cout<<n<<endl;
+        return ;
     }
+    while(n > 0){
+        int x = n % k;
+        n = n / k;
+        cnt += x;
+    }
+    cout<<cnt<<endl;
 }
 
 int32_t main() {

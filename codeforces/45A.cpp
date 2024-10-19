@@ -20,21 +20,21 @@ typedef vector<pll> vll;
 #define yes cout << "YES\n"
 #define int long long
 
-void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
-    }
-}
-
 int32_t main() {
     control;
     int tc;
-    cin >> tc;
-    while (tc--) {
-        solve();
+    vector<string>month={"January","February","March","April","May","June","July","August","September","October","November","December"};
+
+    string currentmonth; cin >> currentmonth;
+    int num ; cin >> num;
+    int ans;
+    for(int i = 0; i < 12; i++){
+        if(month[i] == currentmonth){
+            ans = i;
+            break;
+        }
     }
-    return 0;
+    int futuremonth = (num + ans) % 12;
+    cout<<month[futuremonth]<<endl;
+
 }

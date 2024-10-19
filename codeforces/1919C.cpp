@@ -22,11 +22,31 @@ typedef vector<pll> vll;
 
 void solve() {
     int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    vi v(n);
+   // int x = INT_MAX,ans = 0, y = INT_MAX;
+    int x=1e9, y=1e9, ans=0;
+    for(int i=0; i<n; i++)
+    {
+        cin >> v[i];
+        if(x>y)
+        {
+            swap(x,y);
+        }
+        if(v[i] <= x)
+        {
+            x=v[i];
+        }
+        else if(v[i]<=y)
+        {
+            y=v[i];
+        }
+        else
+        {
+            x=v[i];
+            ans++;
+        }
     }
+    cout << ans << endl;
 }
 
 int32_t main() {

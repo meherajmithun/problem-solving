@@ -20,21 +20,18 @@ typedef vector<pll> vll;
 #define yes cout << "YES\n"
 #define int long long
 
-void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
-    }
-}
 
 int32_t main() {
     control;
-    int tc;
-    cin >> tc;
-    while (tc--) {
-        solve();
+    int n ; cin >> n;
+    int cnt = 0;
+    for(int a = 1; a <= n; a++){
+        for(int b = a; b <= n; b++){
+            int borgo = sqrt(a*a + b*b);
+            if(borgo * borgo == (a*a + b * b) and borgo <= n){
+                cnt++;
+            }
+        }
     }
-    return 0;
+    cout<<cnt<<endl;
 }

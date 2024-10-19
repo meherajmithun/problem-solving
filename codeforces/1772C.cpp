@@ -21,12 +21,19 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    int n , k ;
+    cin >> n >> k;
+    vi v;
+    v.pb(1);
+    int gap = ((k-1)/(n-1));
+    for(int i = 1; i < n; i++){
+        v.pb(v.back() + gap);
+        if(v.back() > k){
+            v.back() = k;
+        }
     }
+    for(auto u : v) cout<<u<<" ";
+    cout<<endl;
 }
 
 int32_t main() {

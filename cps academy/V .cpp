@@ -20,21 +20,32 @@ typedef vector<pll> vll;
 #define yes cout << "YES\n"
 #define int long long
 
-void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
-    }
-}
-
 int32_t main() {
     control;
-    int tc;
-    cin >> tc;
-    while (tc--) {
-        solve();
+    int n ; cin >> n;
+    map<int,int>mp;
+    vi v;
+    for(int i = 0; i < n; i++){
+        int a ; cin >> a;
+        if(mp[a] == 0){
+            v.pb(a);
+            mp[a]++;
+        }
     }
-    return 0;
+   // for(auto u : v) cout<<u<<" ";
+    //cout<<endl;
+    bool sorted = true;
+    int cnt = 0;
+    for(int i = 0; i < v.size(); i++){
+       // sorted = true;
+        for(int j = 0; j < v.size()-1; j++){
+            if(v[j] > v[j+1]){
+                swap(v[j] , v[j+1]);
+                cnt++;
+                sorted = false;
+            }
+        }
+
+    }
+    cout<<cnt<<endl;
 }

@@ -19,14 +19,16 @@ typedef vector<pll> vll;
 #define no cout << "NO\n"
 #define yes cout << "YES\n"
 #define int long long
+long long mx = 0;
+long long mn = 1e+10;
 
 void solve() {
     int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
-    }
+    vl v(n);
+    for(int i = 0 ; i < n; i++) cin >> v[i];
+
+    sort(all(v));
+    cout<<v[n-1]-v[0]<<endl;
 }
 
 int32_t main() {

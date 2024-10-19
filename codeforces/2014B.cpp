@@ -21,12 +21,10 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
-    }
+    int n , k;
+    cin >> n >> k;
+    if((n + k) % 2 == 0 ) cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
 }
 
 int32_t main() {

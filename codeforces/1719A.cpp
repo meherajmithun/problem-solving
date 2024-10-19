@@ -21,11 +21,13 @@ typedef vector<pll> vll;
 #define int long long
 
 void solve() {
-    int n ; cin >> n;
-    cout<<1;
-    n--;
-    while(n--){
-        cout<<0;
+    int a , b;
+    cin >> a >> b;
+    if(a == b || (a % 2 != 0 and b % 2 != 0) || (a % 2 == 0 and b % 2 == 0)){
+        cout<<"Tonya"<<endl;
+    }
+    else{
+        cout<<"Burenka"<<endl;
     }
 }
 

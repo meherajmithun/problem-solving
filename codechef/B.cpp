@@ -23,3 +23,8 @@ int main(){
 		cout<<solve()<<endl;
 	}
 }
+
+
+
+vector ta re sort kore then unique kore check korlam.if unique == x Good and so on
+int sz = unique(v.begin() , v.end())-v.begin();

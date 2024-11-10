@@ -16,18 +16,26 @@ typedef pair<int, int> pii;
 
 int32_t main() {
     slow;
-    int n ; cin >> n;
-    vi v(n);
-    for(auto &u : v) cin >> u;
-    sort(all(v));
-    int need = 0;
-    int x = n / 2;
-    if(n % 2 == 0) x--;
-    //cout<<v[x]<<endl;
-    for(int i = 0; i < n; i++){
-        int y = abs(v[x] - v[i]);
-        need += y;
-        //cout<<need<<endl;
+    int tc;
+    cin >> tc;
+    for(int i = 1 ; i <= tc; i++){
+        vi v(3);
+        for(auto &u : v) cin >> u;
+        sort(v.rbegin() , v.rend());
+        
+        if(v[0] == 6){
+            if(v[1] == 3 and v[2] == 0) cout<<"Case "<<i<<": perfectus"<<endl;
+            else if(v[1] == 1 and v[2] == 1) cout<<"Case "<<i<<": perfectus"<<endl;
+            else cout<<"Case "<<i<<": invalidum"<<endl;
+        }
+        else if(v[0] == 4){
+            if(v[1] == 3 and v[2] == 1) cout<<"Case "<<i<<": perfectus"<<endl;
+            else if(v[1] == 2 and v[2] == 1) cout<<"Case "<<i<<": perfectus"<<endl;
+            else if(v[1] == 4 and v[2] == 0) cout<<"Case "<<i<<": perfectus"<<endl;
+            else cout<<"Case "<<i<<": invalidum"<<endl;
+        }
+        else if(v[0] == 3 and v[1] == 3 and v[2] == 3) cout<<"Case "<<i<<": perfectus"<<endl;
+        else if(v[0] == 2 and v[1] == 2 and v[2] == 2) cout<<"Case "<<i<<": perfectus"<<endl;
+        else cout<<"Case"<<i<<": invalidum"<<endl;
     }
-    cout<<need<<endl;
 }

@@ -1,49 +1,26 @@
-//  IN THE NAME OF ALLAH
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef pair<int, int> pii;
-#define slow ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(v) v.begin(),v.end()
-#define endl '\n'
-#define pb push_back
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-#define int long long
-#define double long double;
 
-void solve() {
+void solve(){
     int n , a , b;
     cin >> n >> a >> b;
     string s ; cin >> s;
-    int x = 0 , y = 0;
-   // cout<<a<<" "<<b<<endl;
-    //if(b>4) b = b%4;
-    for(int i = 0; i < 1000; i++){
-        for(int j = 0; j < n; j++){
-            if(s[j] == 'N' ) y += 1;
-            else if (s[j] == 'E') x += 1;
-            else if(s[j] == 'S') y -= 1;
-            else if(s[j] == 'W')x -= 1;
-            if(x == a and y == b){
-                yes;
-                return;
-            }
+    pair<int,int>initial = {0,0};
+    for(int i = 0; i < 500; i++){
+        if(s[i%n] == 'N') initial.second++;
+        else if(s[i%n] == 'E') initial.first++;
+        else if(s[i%n] == 'S') initial.second--;
+        else initial.first--;
+        if(initial.first == a and initial.second == b){
+            cout<<"YES"<<endl;
+            return ;
         }
     }
-    
-    no;
+    cout<<"NO"<<endl;
 }
-
-int32_t main() {
-    slow;
-    int tc;
-    cin >> tc;
-    while (tc--) {
+int main(){
+    int tc ; cin >> tc;
+    while(tc--){
         solve();
     }
-    return 0;
 }

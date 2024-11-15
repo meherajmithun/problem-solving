@@ -1,4 +1,4 @@
-// IN THE NAME OF ALLAH
+//  IN THE NAME OF ALLAH
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -7,40 +7,41 @@ typedef vector<int> vi;
 typedef vector<ll> vl;
 typedef pair<int, int> pii;
 #define slow ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(v) v.begin(), v.end()
+#define all(v) v.begin(),v.end()
 #define endl '\n'
 #define pb push_back
 #define no cout << "NO\n"
 #define yes cout << "YES\n"
 #define int long long
+#define double long double;
 
 void solve() {
-    string s;
-    cin >> s;
-    int query;
-    cin >> query;
-    while (query--) {
-        int a, b;
-        cin >> a >> b;
-        a--; // Converting to 0-based index
-        b--; // Converting to 0-based index
-
-        if ((b - a + 1) < 4) {
+    string s; cin >> s;
+    int queries ; cin >> queries;
+    int flag = 0;
+    while(queries--){
+        int a , b ; cin >> a >> b;
+        if((a+b) < 5){
             no;
-            continue;
+            flag = 1;
         }
-        
         bool found = false;
-        for (int i = a; i <= b - 3; i++) {
-            if (s.substr(i,i + 4) == "1100") {
-                yes;
-                found = true;
-                break;
+        if(flag == 0){
+            if(b != 0){
+                b--;
+            }
+            a--;
+            for(int i = b; i < a-3; i++){
+                 cout<<s.substr(i,i+4)<<endl;
+                if(s.substr(i,i+4) == "1100"){
+                    yes;
+                    found = true;
+                    break;
+                }
             }
         }
-        
-        if (!found) no;
-    }
+        if( !found and flag == 0) no;
+    }   
 }
 
 int32_t main() {

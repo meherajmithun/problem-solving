@@ -16,20 +16,24 @@ typedef pair<int, int> pii;
 #define double long double;
 
 void solve() {
-    int n; 
-    cin >> n;
-    int sum = 0;
-    for (int i = 0; i < n; i++) {
-        int a; 
-        cin >> a;
-        sum += a;
+    int n ; cin >> n;
+    if(n == 1){
+        cout<<1<<endl;
+        return;
     }
-
-    // Find the minimum `ans` such that (ans + sum) % (n + 1) != 1
-    for (int ans = 1; ans <= n + 1; ans++) {
-        if ((ans + sum) % (n + 1) != 1) {
-            cout << ans << endl;
-            return;
+    cout<<n<<" ";
+    while(true){
+        if(n == 1){
+           // cout<<1<<endl;
+            break;
+        }
+        if(n % 2 == 0){
+            n = n / 2;
+            cout<<n<<" ";
+        }
+        else{
+            n = (n*3)+1;
+            cout<<n<<" ";
         }
     }
 }
@@ -37,7 +41,7 @@ void solve() {
 int32_t main() {
     slow;
     int tc = 1;
-    // cin >> tc; // Uncomment if multiple test cases
+ //   cin >> tc;
     while (tc--) {
         solve();
     }

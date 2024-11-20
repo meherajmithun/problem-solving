@@ -17,16 +17,13 @@ typedef pair<int, int> pii;
 
 void solve() {
     int n ; cin >> n;
-    vi v={1,2,3};
-    //for(auto u : v) cout<<u<<" ";
-    for(int i = 0;i < n;i++) cout<<0<<" ";
-    cout<<endl;
-    while(next_permutation(all(v))){
-        if(v[0]+v[1]+v[2] == n){
-            for(auto u : v) cout<<u<<" ";
-            cout<<endl;
-        }
+    int ans = 0;
+    while(n--){
+        string s ; cin >> s;
+        if(s[1] == '+') ans++;
+        else ans--;
     }
+    cout<<ans<<endl;
 }
 
 int32_t main() {

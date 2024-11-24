@@ -17,20 +17,24 @@ typedef pair<int, int> pii;
 void solve() {
     int n ; cin >> n;
     vi v(n);
-    vi v2(n);
+    int cnt1 = 0;
+    int sum = 0;
     for(int i = 0; i < n; i++){
         cin >> v[i];
-        v2[i] = v[i];
+        sum += v[i];
+        if(v[i] == 1) cnt1++;
     }
-    reverse(all(v2));
-    
-    for(int i = 0 ; i < n; i++){
-        if(v[i] == v2[i] and n != 3){
-            no;
-            return;
-        }
+   if(n == 1){
+        no;
+        return;
     }
-    yes;
+    if(sum < cnt1+n){
+        no;
+        return;
+    }
+    else{
+        yes;
+    }
 }
 
 int32_t main() {

@@ -16,24 +16,19 @@ typedef pair<int, int> pii;
 #define double long double;
 
 void solve() {
-    int n , k ; cin >> n >> k;
-    vi v(n);
-    for(auto &u : v) cin >> u;
-    int kahini = v[0];
-    int ans = 1;
-    for(int i = 1; i < n; i++){
-        if(abs(kahini - v[i]) >= k){
-            ans++;
-            kahini = v[i];
-        }
+    int n,k ; cin >> n >> k;
+    vector<string>s(n);
+    for(int i = 0; i < n; i++){
+        cin >> s[i];
     }
-    cout<<ans<<endl;
+    sort(all(s));
+    for(auto u : s) cout<<u;
 }
 
 int32_t main() {
     slow;
     int tc = 1;
-  //  cin >> tc;
+ //   cin >> tc;
     while (tc--) {
         solve();
     }

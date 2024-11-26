@@ -17,23 +17,12 @@ typedef pair<int, int> pii;
 
 void solve() {
     string s ; cin >> s;
-    while(1){
-        int n = stoi(s);
-        n++;
-        s = to_string(n);
-        int cnt = 0;
-        for(int i = 0; i < s.size(); i++){
-            for(int j = i+1; j < s.size(); j++){
-                if(s[i] != s[j]){
-                    cnt++;
-                }
-            }
-        }
-        if(cnt == 6){
-            cout<<s<<endl;
-            return;
-        }
+    string s2;
+    for(int i = 0; i < s.size(); i++){
+        if(s[i] == 'B' and !s2.empty()) s2.pop_back();
+        else if(s[i] == '0' or s[i] == '1') s2.pb(s[i]);
     }
+    cout<<s2<<endl;
 }
 
 int32_t main() {

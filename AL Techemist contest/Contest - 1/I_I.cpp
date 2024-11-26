@@ -16,9 +16,25 @@ typedef pair<int, int> pii;
 #define double long double;
 
 void solve() {
-    int a , b ; cin >> a >> b;
-    if(a < 8 and b < 8) cout<<"Yes"<<endl;
-    else cout<<"No"<<endl;
+    string s ; cin >> s;
+    while(1){
+        int n = stoi(s);
+        n++;
+        s = to_string(n);
+        int cnt = 0;
+        for(int i
+         = 0; i < s.size(); i++){
+            for(int j = i+1; j < s.size(); j++){
+                if(s[i] != s[j]){
+                    cnt++;
+                }
+            }
+        }
+        if(cnt == 6){
+            cout<<s<<endl;
+            return;
+        }
+    }
 }
 
 int32_t main() {

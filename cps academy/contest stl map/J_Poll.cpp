@@ -16,36 +16,35 @@ typedef pair<int, int> pii;
 #define double long double;
 
 void solve() {
-
-    while(1){
-        int n; cin >> n;
-        if(n == 0){
-            return ;
+    int n ; cin >> n;
+    map<string , int>mp;
+    vector<string>v(n);
+    for(auto &u : v) cin >> u;
+    sort(all(v));
+    for(int i=0 ; i<n; i++){
+        mp[v[i]]++;
+    }
+    vector<int>val;
+    vector<string>s;
+    int mx = 0;
+    for(auto u : mp){
+        if(u.second >= mx){
+            val.pb(u.second);
+            s.pb(u.first);
+            mx = u.second;
         }
-        map<string,int>mp;
-        for(int i = 0; i < n; i++){
-            string s; cin >> s;
-            mp[s]++;
+    }
+    for(int i = 0; i < val.size(); i++){
+        if(val[i] >= *max_element(all(val))){
+            cout<<s[i]<<endl;
         }
-        string key ; int mx = 0;
-        for(auto u : mp){
-            if(u.second > mx){
-                mx = u.second;
-                key = u.first;
-            }
-        }
-        // for(auto u : mp){
-        //     cout<<u.first<<" ";
-        // }
-        // cout<<endl;
-        cout<<key<<endl;
     }
 }
 
 int32_t main() {
     slow;
     int tc = 1;
- //   cin >> tc;
+ //    cin >> tc;
     while (tc--) {
         solve();
     }

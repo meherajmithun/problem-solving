@@ -1,0 +1,1 @@
+{"name":"Local: sliding","url":"d:\\cp\\problem-solving\\cses\\sliding.cpp","tests":[{"id":1733244585573,"input":"7 4\n-1 2 3 3 4 5 -1\n","output":"15"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\cp\\problem-solving\\cses\\sliding.cpp","group":"local","local":true}

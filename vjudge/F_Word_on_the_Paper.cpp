@@ -8,7 +8,7 @@ typedef vector<ll> vl;
 typedef pair<int, int> pii;
 #define slow ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define all(v) v.begin(),v.end()
-#define nl '\n'
+#define endl '\n'
 #define pb push_back
 #define no cout << "NO\n"
 #define yes cout << "YES\n"
@@ -16,22 +16,22 @@ typedef pair<int, int> pii;
 #define double long double;
 
 void solve() {
-    int n , x , y;
-    cin >> n >> x >> y;
-    vi v(n);
-    for(auto &u : v) cin >> u;
-    int cnt = 0;   
-    for(int i = 0; i < n; i++){
-        for(int j = i+1; j < n; j++){
-            if((v[i] + v[j]) % x == 0 and abs(v[i]-v[j]) % y == 0) cnt++;
+    vector<string>s(8);
+    for(int i = 0; i < 8; i++) cin >> s[i];
+    
+    for(int i = 0; i < 8; i++){
+        for(int j = 0; j < 8; j++){
+            if(s[i][j] != '.'){
+                cout<<s[i][j];
+            }
         }
     }
-    cout<<cnt<<nl;   
+    cout<<endl;
 }
 
 int32_t main() {
     slow;
-    int tc;
+    int tc = 1;
     cin >> tc;
     while (tc--) {
         solve();

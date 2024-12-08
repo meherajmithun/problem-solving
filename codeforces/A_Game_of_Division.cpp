@@ -1,3 +1,4 @@
+
 //  IN THE NAME OF ALLAH
 
 #include <bits/stdc++.h>
@@ -16,17 +17,27 @@ typedef pair<int, int> pii;
 #define double long double;
 
 void solve() {
-    int n , x , y;
-    cin >> n >> x >> y;
+    int n , k ; cin >> n  >> k;
     vi v(n);
     for(auto &u : v) cin >> u;
-    int cnt = 0;   
     for(int i = 0; i < n; i++){
-        for(int j = i+1; j < n; j++){
-            if((v[i] + v[j]) % x == 0 and abs(v[i]-v[j]) % y == 0) cnt++;
+        bool paisi = true;
+        for(int j = 0; j < n; j++){
+            if(i != j){
+                int x = abs(v[i]-v[j]);
+                if(x % k == 0){
+                   paisi = false;
+                   break;
+                }
+            }
+        }
+        if(paisi){
+            yes;
+            cout<<i+1<<endl;
+            return;
         }
     }
-    cout<<cnt<<nl;   
+    no; 
 }
 
 int32_t main() {

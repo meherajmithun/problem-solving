@@ -22,11 +22,8 @@ int main() {
             freq[a[i]]++;
             max_freq = max(max_freq, freq[a[i]]);
 
-            // Assign a[i] to b[i] if its frequency is the current maximum
             b[i] = a[i];
 
-            // If there are multiple numbers with the same maximum frequency,
-            // we can choose any of them. Here, we choose the last one encountered.
             for (int j = i - 1; j >= 0; --j) {
                 if (freq[b[j]] < max_freq) {
                     b[j] = a[i];

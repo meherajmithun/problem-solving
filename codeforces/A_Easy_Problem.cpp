@@ -17,25 +17,15 @@ typedef pair<int, int> pii;
 
 void solve() {
     int n ; cin >> n;
-    vi v(n);
-    for(auto &u : v) cin >> u;
-    sort(all(v));
-    int l = 0 , r = n-1;
-    int ans = n-2;
-    while(l <= r){
-        int sum = v[l]*v[r];
-        if(sum > ans){
-            r--;
+    int cnt = 0;
+    for(int i = 1; i < n; i++){
+        for(int j = 1; j < n; j++){
+            if(i+j == n){
+                cnt++;
+            }
         }
-        else if(sum < ans){
-            l++;
-        }
-        else{
-            cout<<v[l]<<" "<<v[r]<<endl;
-            return;
-        }
-    }  
-    //cout<<l+1<<" "<<l+1<<endl; 
+    }
+    cout<<cnt<<endl;
 }
 
 int32_t main() {

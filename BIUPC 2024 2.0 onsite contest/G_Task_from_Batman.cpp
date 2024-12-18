@@ -19,29 +19,21 @@ void solve() {
     int n ; cin >> n;
     vi v(n);
     for(auto &u : v) cin >> u;
-    sort(all(v));
-    int l = 0 , r = n-1;
-    int ans = n-2;
-    while(l <= r){
-        int sum = v[l]*v[r];
-        if(sum > ans){
-            r--;
+    int ans = 0;
+    int k = 0;
+    for(int i = 0; i < n; i++){
+        if(v[i]&1){
+             k = i+1;
         }
-        else if(sum < ans){
-            l++;
-        }
-        else{
-            cout<<v[l]<<" "<<v[r]<<endl;
-            return;
-        }
-    }  
-    //cout<<l+1<<" "<<l+1<<endl; 
+        ans += k;
+    }
+    cout<<ans<<endl;
 }
 
 int32_t main() {
     slow;
-    int tc;
-    cin >> tc;
+    int tc = 1;
+ //   cin >> tc;
     while (tc--) {
         solve();
     }

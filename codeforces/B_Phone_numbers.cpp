@@ -16,30 +16,18 @@ typedef pair<int, int> pii;
 #define double long double;
 
 void solve() {
-    int n , d ; 
-    cin >> n >> d;
-    vi v(n);
-    for(auto &u : v) cin >> u;
-    int m ; cin >> m;
-    int sum = 0;
-    sort(all(v));
-    if(m < n){
-        for(int i = 0; i < m; i++) sum += v[i];
-        cout<<sum<<endl;
-        return;
-    }  
-    //Otherwise he will pay a fine or neutral.
-    for(int i = 0; i < n; i++ ) sum += v[i];
-
-    int hook = m-n;
-    int fine = hook*d;
-    cout<<sum-fine<<endl;
+    int n ; cin >>  n;
+    string s ; cin >> s;
+    for(int i = 0; i < n; i++){
+        cout<<s[i];
+        if(i % 2 == 1 and i < n-(n%2)-2) cout<<"-";
+    }
 }
 
 int32_t main() {
     slow;
     int tc = 1;
-    //cin >> tc;
+ //   cin >> tc;
     while (tc--) {
         solve();
     }

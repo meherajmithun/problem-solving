@@ -15,26 +15,33 @@ typedef pair<int, int> pii;
 #define int long long
 #define double long double;
 
-void solve() {
-    int n , k ;
-    cin >> n >> k;
-    vi v(n);
-    for(auto &u : v) cin >> u;
-    for(int i = 0; i < n; i++){
-        for(int j = i+1; j < n; j++){
-            if(v[i] + v[j] == k){
-                cout<<i+1<<" "<<j+1<<endl;
-                return ;
-            }
+void call(vector<int>v , int n){
+    for(int i = 0; i < n/10; i++){
+        if(i == 0){
+            v[i] = 10;
+        }
+        else{
+            v[i] = v[i-1]*10;
         }
     }
-    cout<<"IMPOSSIBLE"<<endl;
+}
+
+void solve() {
+    int n ; cin >> n;
+    vl v;
+    call(v,n);   
+    for(int i = 0; i < n; i++){
+        if(v[i] > n){
+            cout<<n-v[i]<<endl;
+            return;
+        }
+    }
 }
 
 int32_t main() {
     slow;
-    int tc = 1;
- //   cin >> tc;
+    int tc;
+    cin >> tc;
     while (tc--) {
         solve();
     }

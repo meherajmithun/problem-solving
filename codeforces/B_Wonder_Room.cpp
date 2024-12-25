@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
+typedef long long ll; 
 typedef vector<int> vi;
 typedef vector<ll> vl;
 typedef pair<int, int> pii;
@@ -16,19 +16,19 @@ typedef pair<int, int> pii;
 #define double long double;
 
 void solve() {
-    int n , k ;
-    cin >> n >> k;
-    vi v(n);
-    for(auto &u : v) cin >> u;
-    for(int i = 0; i < n; i++){
-        for(int j = i+1; j < n; j++){
-            if(v[i] + v[j] == k){
-                cout<<i+1<<" "<<j+1<<endl;
-                return ;
-            }
+    int n , a , b;
+    cin >> n >> a >> b;
+    int area = 6*n;
+    int s = a*b;
+    area = max(area,s);
+    int x = sqrt(area);
+    for(int i = x; i > 0; i--){
+        if(area % i == 0){
+            cout<<area<<endl<<max(i,area/i)<<" "<<min(i,area/i)<<endl;
+            return ;
         }
     }
-    cout<<"IMPOSSIBLE"<<endl;
+
 }
 
 int32_t main() {

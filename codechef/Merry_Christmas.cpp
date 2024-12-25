@@ -16,19 +16,16 @@ typedef pair<int, int> pii;
 #define double long double;
 
 void solve() {
-    int n , k ;
-    cin >> n >> k;
-    vi v(n);
-    for(auto &u : v) cin >> u;
-    for(int i = 0; i < n; i++){
-        for(int j = i+1; j < n; j++){
-            if(v[i] + v[j] == k){
-                cout<<i+1<<" "<<j+1<<endl;
-                return ;
-            }
-        }
+    int n ; cin >> n;
+    if(n < 3){
+        cout<<1<<endl;
     }
-    cout<<"IMPOSSIBLE"<<endl;
+    else if(n < 7){
+        cout<<2<<endl;
+    }
+    else{
+        cout<<3<<endl;
+    }
 }
 
 int32_t main() {

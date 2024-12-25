@@ -16,25 +16,24 @@ typedef pair<int, int> pii;
 #define double long double;
 
 void solve() {
-    int n , k ;
-    cin >> n >> k;
+    int n ; cin >> n;
     vi v(n);
     for(auto &u : v) cin >> u;
+    map<int,int>mp;
     for(int i = 0; i < n; i++){
-        for(int j = i+1; j < n; j++){
-            if(v[i] + v[j] == k){
-                cout<<i+1<<" "<<j+1<<endl;
-                return ;
-            }
-        }
+        mp[v[i]] = max(mp[v[i]] , i+1);
+    }   
+    int penalty = 0;
+    for(auto u : mp){
+        penalty += u.second;
     }
-    cout<<"IMPOSSIBLE"<<endl;
+    cout<<penalty<<endl;
 }
 
 int32_t main() {
     slow;
-    int tc = 1;
- //   cin >> tc;
+    int tc;
+    cin >> tc;
     while (tc--) {
         solve();
     }

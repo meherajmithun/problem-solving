@@ -15,32 +15,30 @@ typedef pair<int, int> pii;
 #define int long long
 #define double long double
 #define mod 1000000007
-int n , dp[10000001];
-
-int dice(int n){
-    if(n == 0) return 1;
-    if(dp[n] != -1) return dp[n];
-
-    int res = 0;
-    for(int i = 1; i <= 6; i++){
-        if(n >= i){
-            res += dice(n-i);
-            res = res % mod;
-        }
-    }
-    dp[n] = res;
-    return res;
-}
 
 void solve() {
-//    int n ; cin >> n;
-    int ans = dice(n);
-    cout<<ans<<endl;
+    int k ; cin >> k;
+    string s , t ; cin >> s >> t;
+    sort(all(s));
+    sort(all(t));
+    int n1 = unique(all(s))-s.begin();
+    int n2 = unique(all(t))-t.begin();
+    int n = max(n1,n2);
+    int non = 0;
+    for(int i = 0; i < n; i++){
+        if(s[i] != t[i]){
+            non++;
+            if(non > k){
+                cout<<"No";
+                return;
+            }
+        }
+    }
+    cout<<"Yes";
 }
 
 int32_t main() {
     slow;
-    memset(dp,-1,sizeof(dp));
     int tc = 1;
  //   cin >> tc;
     while (tc--) {

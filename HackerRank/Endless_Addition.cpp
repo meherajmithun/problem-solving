@@ -17,21 +17,24 @@ typedef pair<int, int> pii;
 #define mod 1000000007
 
 void solve() {
-    int n ; cin >> n;
-    string s ; cin >> s;
-    sort(all(s));
-    int sz = unique(all(s)) - s.begin();
-  //  cout<<n-sz<<endl;
-    if(abs(sz - n) >= 3){
-        no;
-    }   
-    else yes;
+    string a , b ;
+    cin >> a >> b;
+    //cout<<a+b<<endl;
+    int n = stoi(a);
+    int m = stoi(b);
+    int x = max(a.size() , b.size());
+    int ans = 0;
+    for(int i = x-1; i >= 0; i--){
+        ans += a[i]-48;
+        ans += b[i]-48;
+    }
+    cout<<ans*10<<endl;
 }
 
 int32_t main() {
     slow;
-    int tc;
-    cin >> tc;
+    int tc = 1;
+ ///   cin >> tc;
     while (tc--) {
         solve();
     }

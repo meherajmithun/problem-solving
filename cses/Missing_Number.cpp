@@ -8,35 +8,25 @@ typedef vector<ll> vl;
 typedef pair<int, int> pii;
 #define slow ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define all(v) v.begin(),v.end()
-#define endl '\n'
+#define nl '\n'
 #define pb push_back
 #define no cout << "NO\n"
 #define yes cout << "YES\n"
 #define int long long
-#define double long double;
+#define double long double
+#define mod 1000000007
 
 void solve() {
     int n ; cin >> n;
-    if(n == 2){
+    set<int>st;
+    for(int i = 1; i <= n; i++){
+        st.insert(i);
+    }
+    for(int i = 0; i < n; i++){
         int a ; cin >> a;
-        if(a == 1){
-            cout<<2<<endl;
-        }
-        else{
-            cout<<1<<endl;
-        }
-        return ;
+        st.erase(a);
     }
-    n--;
-    vi v(n);
-    for(auto &u : v) cin >> u;
-    sort(all(v));
-    for(int i = 0; i < n-`; i++){
-        if(v[i+1]-v[i] != 1){
-            cout<<v[i]+1<<endl;
-            return;
-        }
-    }
+    cout<<*st.begin()<<endl;
 }
 
 int32_t main() {

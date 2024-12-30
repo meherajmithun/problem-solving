@@ -17,15 +17,15 @@ typedef pair<int, int> pii;
 #define mod 1000000007
 
 void solve() {
-    int n ; cin >> n;
-    string s ; cin >> s;
-    sort(all(s));
-    int sz = unique(all(s)) - s.begin();
-  //  cout<<n-sz<<endl;
-    if(abs(sz - n) >= 3){
-        no;
-    }   
-    else yes;
+    int a,b,c;
+    cin >> a >> b >> c;
+    a = a*a;
+    b = b*b;
+    c = c*c;
+    if(a+b == c) yes;
+    else if(a+c == b) yes;
+    else if(b+c == a) yes;
+    else no;   
 }
 
 int32_t main() {

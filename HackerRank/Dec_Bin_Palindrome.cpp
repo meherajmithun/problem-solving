@@ -18,14 +18,22 @@ typedef pair<int, int> pii;
 
 void solve() {
     int n ; cin >> n;
-    string s ; cin >> s;
-    sort(all(s));
-    int sz = unique(all(s)) - s.begin();
-  //  cout<<n-sz<<endl;
-    if(abs(sz - n) >= 3){
-        no;
+    vi v;
+    vi v2;
+    while(n > 0){
+        if(n % 2 == 0){
+            v.pb(0);
+            v2.pb(0);
+        }
+        else{
+            v.pb(1);
+            v2.pb(1);
+        }
+        n /= 2;
     }   
-    else yes;
+    reverse(all(v2));
+    if(v == v2) cout<<"Yes"<<endl;
+    else cout<<"No"<<endl;
 }
 
 int32_t main() {

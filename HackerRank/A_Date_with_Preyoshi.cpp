@@ -12,37 +12,31 @@ typedef pair<int, int> pii;
 #define pb push_back
 #define no cout << "NO\n"
 #define yes cout << "YES\n"
-//#define int long long
+#define int long long
 #define double long double
 #define mod 1000000007
 
 void solve() {
-    int n ; cin >> n;
-    vi v(n);
-    for(auto &u : v) cin >> u;
-    int mx = INT_MIN;
-    int l = 0 , r = 0;
-    map<int,int>mp;
-    //mp[v[r]]++;
-    while(r < n){
-        //r++;
-        mp[v[r]]++;
-        if(mp[v[r]] == 2){
-           // mp[v[l]]--;
-            while(l <= r){
-             //   l++;
-                mp[v[l]]--;
-                l++;
-                if(mp[v[r]] == 1){
-                    break;
+    string s , s2;
+    cin >> s >> s2;
+    for(int i = 0; i < (int)s.size(); i++){
+        if(s[i] == s2[0]){
+            int k = i;
+            int cnt = 0;
+            for(int j = 0; j < s2.size(); j++){
+                if(s[i] == s2[j]){
+                    cnt++;
                 }
-               //l++; 
+                i++;
             }
+            if(cnt == s2.size()){
+                cout<<"It's a Date"<<endl;
+                return;
+            }
+            i = k;
         }
-        mx = max(mx,r-l+1);    
-        r++;
     }
-    cout<<mx<<endl;
+    cout<<"Single e roye gelam";
 }
 
 int32_t main() {

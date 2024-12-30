@@ -22,8 +22,19 @@ typedef vector<pll> vll;
 void solve() {
    int k ; cin >> k;
    int n ; cin >> n;
+   int gap = (n-1)/(k-1);
+   gap--;
    for(int i = 1; i < k; i++){
-    cout<<i<<" ";
+    if(i == 1){
+      cout<<i<<" ";
+    }
+    else{
+      cout<<(i+gap)<<" ";
+    }
+   }
+   if((n-k) > 2 or gap > 2){
+    cout<<n-(n-k)+1<<endl;
+    return;
    }
    cout<<n<<endl;
 }

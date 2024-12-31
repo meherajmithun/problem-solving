@@ -21,32 +21,30 @@ void solve() {
     vi v(n);
     for(auto &u : v) cin >> u;
     int round = 0;
-    // v.erase(v.begin()+3);
-    int cnt = 0;
-    // for(auto u : v) cout<<u<<" ";
     while(true){
-        bool paisi = true;
-        for(int i = 1; i < n; i++){
-            if(v[i-1] < v[i]){
-                if(v[i-1] != -1 and v[i] != -1){
-                    v[i] = -1;
-                    v[i-1] = -1;
-                    cnt += 2;
-                    paisi = false;
+        bool painai = true;
+        for(int i = 0; i < (int)v.size(); i++){
+            if(v[i] < v[i+1]){
+                painai = false;
+                v.erase(v.begin()+i);
+                v.erase(v.begin()+i+1);
+                if(i >= v.size()){
+                    break;
                 }
             }
         }
-        round++;
-        if(cnt == n){
+        //round++;
+        if(painai){
+            round += v.size();
             cout<<round<<endl;
             return;
         }
-        if(paisi){
+        round++;
+        if(v.size() == 1){
             cout<<round+1<<endl;
             return;
         }
     }
-
 }
 
 int32_t main() {

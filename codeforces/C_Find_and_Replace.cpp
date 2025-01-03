@@ -19,13 +19,23 @@ typedef pair<int, int> pii;
 void solve() {
     int n ; cin >> n;
     string s ; cin >> s;
-    sort(all(s));
-    int sz = unique(all(s)) - s.begin();
-  //  cout<<n-sz<<endl;
-    if(abs(sz - n) >= 3){
-        no;
-    }   
-    else yes;
+    map<char,vi>mp;
+    for(int i = 0; i < n; i++){
+        mp[s[i]].pb(i);
+    }
+    for(auto u : mp){
+        if(u.second.size() > 1){
+            int x = u.second[0] % 2;
+            for(auto v : u.second){
+                int y = v % 2;
+                if(x != y){
+                    no;
+                    return;
+                }
+            }
+        }
+    }
+    yes;
 }
 
 int32_t main() {

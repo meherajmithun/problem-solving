@@ -1,26 +1,23 @@
 #include<bits/stdc++.h>
-using namespace std;
+using  namespace std;
+#define ll long long
 
-void slow(){
-	ios_base::sync_with_stdio();
+void optimize(){
+	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);
 }
-
 void solve(){
-	int n; cin >> n;
-	int ans = n/2;
-	if(n % 2 !=0) ans++;
-	cout<<ans<<endl;
-	int x = 1;
-	int y = 3*n;
-	for(int i=0; i<ans; i++){
-		cout<<x<<" "<<y<<endl;
-		x += 3;
-		y -= 3;
+	int n; cin >>  n;
+	vector<ll>arr(n);
+	for(auto &u : arr) cin >> u;
+	ll sum=0;
+	for(int i=0; i<n; i++){
+		sum += arr[i];
 	}
+	cout<<abs(sum)<<endl;
 }
 int main(){
-	slow();
+	optimize();
 	int tc; cin >> tc;
 	while(tc--){
 		solve();

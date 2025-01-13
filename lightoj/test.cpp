@@ -6,15 +6,16 @@ void optimize(){
 	cin.tie(0);cout.tie(0);
 }
 
+void solve(){
+    int n; cin >> n;
+    string s; cin >> s;
+    cout<<s.back()<<'\n';
+}
+
 int main(){
 	optimize();
-	int n; cin >> n;
-	vector<int>v(n);
-	int mn = INT_MAX;
-	for(int i=0; i<n; i++){
-		int a; cin >> a;
-		a = abs(a);
-		mn = min(a,mn);
-	}
-	cout<<mn<<endl;
+    int tc; cin >> tc;
+    while(tc--){
+        solve();
+    }
 }

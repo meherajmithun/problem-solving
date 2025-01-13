@@ -1,40 +1,30 @@
-/*
-  IN THE NAME OF ALLAH
-  Author: Meheraj Mithun
-  Bangladesh University Of Business and Technology
-*/
 #include<bits/stdc++.h>
 using namespace std;
-#define fastIO ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-#define endl '\n'
-#define pb push_back
 #define ll long long
-#define no (cout << "NO\n")
-#define yes (cout << "YES\n")
 
-void solve(){
-    vector<int>v(3);
-    for(int i = 0; i < 3; i++) cin >> v[i];
-    sort(v.begin() , v.end());
-    int sum = 0;
-    for(int i = 0; i < 3; i++) sum += v[i];
-    if(sum % 2 != 0){
-        cout<<-1<<endl;
-        return ;
-    }
-    else {
-        int ans = min(v[0] + v[1],sum/2);
-        cout<<ans<<endl;
-        return ;
-    }
+void optimize(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);
 }
 
-int main(){
-    fastIO;
-    int T;
-    cin >> T;
-    while(T--){
-         solve();
+void solve(){
+    int n; cin >> n;
+    vector<int>v(n);
+    for(auto &u : v) cin >> u;
+    int loss = 3;
+    for(int i=0; i<n; i++){
+        if(v[i] == loss){
+            cout<<"NO"<<endl;
+            return;
+        }
+        loss = 6-loss-v[i];
     }
-    return 0;
+    cout<<"YES"<<endl;
+}
+int main(){
+	optimize();
+    int tc = 1; //cin >> tc;
+    while(tc--){
+        solve();
+    }
 }

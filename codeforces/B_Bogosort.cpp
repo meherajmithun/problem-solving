@@ -13,13 +13,13 @@ void solve(){
     for(auto &u : v) cin >> u;
     vector<int>ans;
     sort(v.rbegin() , v.rend());
-    // for(int i=0; i<n; i++){
-    //     for(int j=i+1; j<n; j++){
-    //         if((j-v[j]) != (i-v[i])){
-    //             ans.push_back(v[i]);
-    //         }
-    //     }
-    // }
+    for(int i=0; i<n; i++){
+        for(int j=i+1; j<n; j++){
+            if((j-v[j]) != (i-v[i])){
+                ans.push_back(v[i]);
+            }
+        }
+    }
     for(auto u : v) cout<<u<<" ";
         cout<<endl;
 }

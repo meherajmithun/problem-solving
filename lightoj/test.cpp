@@ -6,26 +6,17 @@ void fast(){
     cin.tie(0);cout.tie(0);
 }
 void solve(){
-    string s,s2;
-    cin >> s >> s2;
-    vector<int>v;
-    for(int i=0; i<(int)s2.size(); i++){
-        for(int j=0; j<(int)s.size(); j++){
-            if(s2[i] == s[j]){
-                v.push_back(j+1);
-                break;
-            }
-        }
-    }
-    int ans=0;
-    for(int i=0; i<v.size()-1; i++){   
-        ans += abs(v[i+1] - v[i]);
-    }
-    cout<<ans<<endl;
+    string s;
+    getline(cin,s);
+    transform(s.begin() , s.end(),s.begin(),::tolower);
+    sort(s.begin() , s.end());
+    int sz = unique(s.begin() , s.end())-s.begin();
+    if(sz == 27) cout<<"pangram"<<endl;
+    else cout<<"not pangram"<<endl;
 }
 int main(){
     fast();
-    int tc; cin >> tc;
+    int tc = 1; ///cin >> tc;
     while(tc--){
         solve();
     }

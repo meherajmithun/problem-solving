@@ -6,13 +6,17 @@ void fast(){
     cin.tie(0);cout.tie(0);
 }
 void solve(){
-    string s;
-    getline(cin,s);
-    transform(s.begin() , s.end(),s.begin(),::tolower);
-    sort(s.begin() , s.end());
-    int sz = unique(s.begin() , s.end())-s.begin();
-    if(sz == 27) cout<<"pangram"<<endl;
-    else cout<<"not pangram"<<endl;
+    int n; cin >> n;
+    string s; cin >> s;
+    for(int i=0; i<n; i++){
+        if(s[i] == 'n' and s[i+1] == 'a'){
+            cout<<"nya";
+            i++;
+        }
+        else{
+            cout<<s[i];
+        }
+    }
 }
 int main(){
     fast();

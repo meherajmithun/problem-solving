@@ -1,37 +1,51 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <map>
+#include <algorithm>
 using namespace std;
-#define ll long long
 
-void fast(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-}
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-int main(){
-    fast();
-    int tc; cin >> tc;
-    while(tc--){
-        int n; cin >> n;
-        int l,r; cin >> l >> r;
-        l--; r--; 
-        
-        vector<ll> v(n);
-        for(auto &u : v) cin >> u;
-        
-        vector<ll> v2 = v;
-        sort(v2.begin(), v2.end());
-        
-        int sz = r - l + 1;
-        
-        for (int i = 0; i < sz; i++) {
-            v[i] = v2[i];
+    int T; // Number of test cases
+    cin >> T;
+
+    while (T--) {
+        int N; // Number of frogs
+        cin >> N;
+
+        vector<int> A(N); // Buckets where frogs are initially located
+        for (int i = 0; i < N; ++i) {
+            cin >> A[i];
         }
-        
-        ll ans = 0;
-        for (int i = 0; i < sz; i++) {
-            ans += v[i];
+
+        // Debug: Print the input array
+        cout << "Input A: ";
+        for (int i = 0; i < N; ++i) {
+            cout << A[i] << " ";
         }
-        
-        cout << ans << endl;
+        cout << "\n";
+
+        // Use a map to count occurrences of each bucket
+        map<int, int> bucket_count;
+        int max_frogs_in_bucket = 0;
+
+        for (int i = 0; i < N; ++i) {
+            bucket_count[A[i]]++;
+            max_frogs_in_bucket = max(max_frogs_in_bucket, bucket_count[A[i]]);
+        }
+
+        // Debug: Print bucket counts
+        cout << "Bucket counts: ";
+        for (auto &[bucket, count] : bucket_count) {
+            cout << "(" << bucket << ": " << count << ") ";
+        }
+        cout << "\n";
+
+        // Output the maximum number of frogs in a single bucket
+        cout << max_frogs_in_bucket << "\n";
     }
+
+    return 0;
 }

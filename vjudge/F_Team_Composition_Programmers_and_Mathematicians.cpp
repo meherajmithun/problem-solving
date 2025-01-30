@@ -19,25 +19,32 @@ void solve(){
         cout<<(ans/2)<<endl;
     }
     if(a > b){
-        if(b == 1){
+        if(b == 1 and a > 4){
             cout<<1<<endl;
         }
-        else if(b == 2){
+        else if(b == 2 and a > 3){
             cout<<2<<endl;
         }
+        else if(a < 4){
+            cout<<1<<endl;
+        }
         else{
+    
             ll ans = b/2;
-            if(b % 2 != 0) ans++;
-            cout<<ans<<endl;
+            if(ans % 2 != 0) ans++;
+            cout<<(ans)<<endl;
         }
     }
 
     if(a < b){
-        if(a == 1){
+        if(a == 1 and b > 4){
             cout<<1<<endl;
         }
-        else if(a == 2){
+        else if(a == 2 and b > 3){
             cout<<2<<endl;
+        }
+        else if(b < 4){
+            cout<<1<<endl;
         }
         else{
             ll ans = a/2;

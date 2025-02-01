@@ -1,39 +1,44 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-void slow(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-}
+const long double pi = acos(-1);
+//#define int long long
+#define nl '\n'
+#define all(x) (x).begin(), (x).end()
 
-void solve(){
-    int n; cin>> n;
-    vector<string>s(n);
-    map<string,bool>mp;
-    for(int i=0; i<n; i++){
-        cin >> s[i];
-        mp[s[i]] = 1;
+void testCase(){
+    int n; cin>>n;
+
+    vector<int> vi(n);
+    for(int &x : vi) cin>>x;
+
+    //set<pair<bool, int>> st;
+    set<int> st;
+    for(int i=1; i<=n; i++){
+        st.emplace(i);
     }
-    for(int i=0; i<n; i++){
-        int ans = 0;
-        string s3 = "";
-        string s2 = s[i];
-        int k = s2.size();
-        while(k){
-            k--;
-            s3 += s2[0];
-            s2.erase(s2.begin());
-            ans |= mp.count(s2) and mp.count(s3);
+    
+    for(int x : vi){
+        //cout<<*st.find(x)<<endl;
+        auto it = st.find(x);
+        cout<<*it<<endl;
+        if(it == st.end()){
+            //cout<<*st.begin() <<' ';
+            st.erase(st.begin());
+            continue;
         }
-        cout<<ans;
+
+        //cout<<x <<' ';
+        st.erase(it);
     }
-    cout<<endl;
+    cout<<nl;
 }
 
-int main(){
-    slow();
-    int tc; cin >> tc;
-    while(tc--){
-        solve();
-    }
+signed main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int t=1;
+    cin>>t;
+    while(t--) testCase();
+    return 0;
 }

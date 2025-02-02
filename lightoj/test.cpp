@@ -1,44 +1,37 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+#define endl '\n'
+#define int long long
 
-const long double pi = acos(-1);
-//#define int long long
-#define nl '\n'
-#define all(x) (x).begin(), (x).end()
-
-void testCase(){
-    int n; cin>>n;
-
-    vector<int> vi(n);
-    for(int &x : vi) cin>>x;
-
-    //set<pair<bool, int>> st;
-    set<int> st;
-    for(int i=1; i<=n; i++){
-        st.emplace(i);
-    }
-    
-    for(int x : vi){
-        //cout<<*st.find(x)<<endl;
-        auto it = st.find(x);
-        cout<<*it<<endl;
-        if(it == st.end()){
-            //cout<<*st.begin() <<' ';
-            st.erase(st.begin());
-            continue;
+void slow(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
+}
+void solve(){
+    int n; cin >> n;
+    set<int>st;
+    vector<int>v(n),v2(n);
+    for(auto &u : v) cin >> u;
+    for(auto &u : v2) cin >> u;
+    //sort(v.begin() , v.end());
+    //sort(v2.rbegin() , v2.rend());
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            st.insert(v[i]+v2[i]);
+            if(st.size() >= 3){
+                cout<<"YES"<<endl;
+                return;
+            }
         }
-
-        //cout<<x <<' ';
-        st.erase(it);
     }
-    cout<<nl;
+    ///if(st.size() >= 3) cout<<"YES"<<endl;
+     cout<<"NO"<<endl;
 }
 
-signed main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    int t=1;
-    cin>>t;
-    while(t--) testCase();
-    return 0;
+int32_t main(){
+    slow();
+    int tc; cin >> tc;
+    while(tc--){
+        solve();
+    }
 }

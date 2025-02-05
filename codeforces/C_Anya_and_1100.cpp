@@ -1,55 +1,46 @@
-//  IN THE NAME OF ALLAH
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef pair<int, int> pii;
-#define slow ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(v) v.begin(),v.end()
-#define endl '\n'
-#define pb push_back
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-#define int long long
-#define double long double;
+#define nl '\n'
 
-void solve() {
-    string s; cin >> s;
-    int queries ; cin >> queries;
-    int flag = 0;
-    while(queries--){
-        int a , b ; cin >> a >> b;
-        if((a+b) < 5){
-            no;
-            flag = 1;
-        }
-        bool found = false;
-        if(flag == 0){
-            if(b != 0){
-                b--;
-            }
-            a--;
-            for(int i = b; i < a-3; i++){
-                 cout<<s.substr(i,i+4)<<endl;
-                if(s.substr(i,i+4) == "1100"){
-                    yes;
-                    found = true;
-                    break;
-                }
-            }
-        }
-        if( !found and flag == 0) no;
-    }   
+void slow(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
 }
 
-int32_t main() {
-    slow;
-    int tc;
-    cin >> tc;
-    while (tc--) {
+void solve(){
+    string s;
+    cin >> s;
+    int n = (int)s.size();
+    int cnt = 0;
+    for (int i = 0; i + 3 < n; i++)
+    {
+        if (s.substr(i, 4) == "1100")
+            cnt++;
+    }
+    int q;
+    cin >> q;
+    while (q--)
+    {
+		int x;
+		cin >> x;
+		char c;
+		cin >> c;
+		x--;
+		for (int i = max(0, x - 3); i + 3 <= min(n - 1, x + 3); i++) {
+			cnt -= (s.substr(i, 4) == "1100");
+		}
+		s[x] = c;
+		for (int i = max(0, x - 3); i + 3 <= min(n - 1, x + 3); i++) {
+			cnt += (s.substr(i, 4) == "1100");
+        }
+        if(cnt) cout << "YES" << nl;
+        else cout << "NO" << nl;
+    }
+}
+int main(){
+    slow();
+    int tc; cin >> tc;
+    while(tc--){
         solve();
     }
-    return 0;
 }

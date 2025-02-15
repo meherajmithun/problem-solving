@@ -1,28 +1,37 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define endl '\n'
+#define print(x) cout << x << '\n'
 
-void slow(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-}
-int main(){
-    slow();
+void solve(){
     int n; cin >> n;
-    vector<ll>v(n);
+    vector<int>v(n);
     for(auto &u : v) cin >> u;
-    sort(v.begin() , v.end());
+    bool paisi = true;
+    vector<int>visited(n);
+    for(int i=0; i<n; i++){
+        visited[i] = i+1;
+    }
+    for(int i=0; i<n; i++){
+        if(v[i] < (i+1)){
+            paisi = false;
+        }
+        if(v[i] > (i+1)){
+            swap(visited[i] , visited[v[i]]);
+        }
+    }
+    if( !paisi){
+        cout<<-1<<endl;
+    }
+    else{
+        for(auto u : visited) cout<<u<<" ";
+        cout<<endl;
+    }
+}
 
-    int query; cin >> query;
-    while(query--){
-        ll l,s,p;
-        cin >> l >> s >> p;
-        auto it = lower_bound(v.begin() , v.end() , l) - v.begin();
-        it = (n-it);
-        ll power = it*p;
-        //cout<<it<<" "<<power<<endl;
-        if((s-power) > 0) cout<<"Apaa Nai :("<<endl;
-        else cout<<"Apaa Ache :)"<<endl;
-    }  
+int main(){
+    int tc; cin >> tc;
+    while(tc--){
+        solve();
+    }
 }

@@ -3,8 +3,6 @@
 #include<vector>
 #include<map>
 #include<algorithm>
-#define ll long long
-#define print(x) cout << x << '\n'
 #define mod 1000000009
 using namespace std;
 
@@ -15,23 +13,31 @@ void slow(){
 
 void solve(){
     int n; cin >> n;
-    vector<ll>v(n);
+    vector<int>v(n);
     for(auto &u : v) cin >> u;
-    sort(v.begin() , v.end());
 
-    ll minimum_sum = 1;
+    map<int,int>mp;
     for(int i=0; i<n; i++){
-        if(minimum_sum >= v[i]){
-            minimum_sum += v[i];
-        }
+        mp[v[i]]++;
     }
-    print(minimum_sum);
+    int k = 0;
+    for(auto u : mp){
+        if(u.first == 0) continue;
+        if(u.second % 2 == 1) k++;
+    }
+    int it = 0;
+    for(auto u : mp){
+        it += u.second/2;
+    }
+    if(it > 0) k++;
+    cout<<k<<endl;
+
 }
 
 int main(){
     slow();
     int tc = 1; 
-    //cin >> tc;
+    cin >> tc;
     while(tc--){
         solve();
     }

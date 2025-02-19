@@ -1,47 +1,39 @@
-/*
-  IN THE NAME OF ALLAH
-  Author: Meheraj Mithun
-  Bangladesh University Of Business and Technology
-*/
-#include <bits/stdc++.h>
+#include<iostream>
+#include<string>
+#include<vector>
+#include<map>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
-typedef vector<pii> vii;
-typedef vector<pll> vll;
-#define fastIO ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(v) v.begin(),v.end()
-#define endl '\n'
-#define pb push_back
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
 
-void solve() {
-        int n;
-        cin >> n;
-
-        string s;
-        for (int i = 0; i < n; i++) {
-            if (i % 2 == 0) {
-                s += 'a';
-            } else {
-                s += 'e';
-            }
-        }
-
-        cout << s << endl;
-    
+void slow(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
 }
 
-int main() {
-    fastIO;
-    int T;
-    cin >> T;
-    while (T--) {
+void solve(){
+    int n; cin >> n;
+    string s = "aeiou";
+    
+    map<char,int>mp;
+    int indx = 0;
+    for(int i=0; i<n; i++){
+        mp[s[indx]]++;
+        indx++;
+        indx %= 5;
+    }
+
+    //for(auto it : mp) cout<<it.first<<" "<<it.second<<endl;
+    for(auto u: mp){
+        for(int i=0; i<u.second; i++){
+            cout<<u.first;
+        }
+    }
+    cout<<endl;
+}
+
+int main(){
+    slow();
+    int tc; cin >> tc;
+    while(tc--){
         solve();
     }
-    return 0;
 }

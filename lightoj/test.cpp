@@ -1,6 +1,8 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string>
+#include<vector>
+#include<map>
 using namespace std;
-#define print(x) cout<< x << '\n'
 
 void slow(){
     ios_base::sync_with_stdio(0);
@@ -8,34 +10,24 @@ void slow(){
 }
 
 void solve(){
-    string s; cin >> s;
-    int n = (int)s.size();
-
+    int n; cin >> n;
+    string s = "aeiou";
+    
     map<char,int>mp;
+    int indx = 0;
+    for(int i=0; i<n; i++){
+        mp[s[indx]]++;
+        indx++;
+        indx %= 5;
+    }
 
-    int l=0,r=0;
-    int Minimum_length = INT_MAX;
-    bool paisi = true;
-    while(r < n){
-        mp[s[r]]++;
-        if(mp.size() == 3){
-            while(l < r and mp.size() == 3){
-                paisi = false;
-                Minimum_length = min(Minimum_length , (r-l+1));
-                mp[s[l]]--;
-                if(mp[s[l]] == 0){
-                    mp.erase(s[l]);
-                }
-                l++;
-            }
+    //for(auto it : mp) cout<<it.first<<" "<<it.second<<endl;
+    for(auto u: mp){
+        for(int i=0; i<u.second; i++){
+            cout<<u.first;
         }
-        r++;
     }
-    if(paisi){
-        print(0);
-        return;
-    }
-    print(Minimum_length);
+    cout<<endl;
 }
 
 int main(){

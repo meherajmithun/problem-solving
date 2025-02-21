@@ -1,29 +1,29 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define endl '\n'
-
-void slow(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-}
 
 int main(){
-    slow();
-    int n; cin >> n;
-    ll target; cin >> target;
-    vector<ll>v(n);
-    map<ll,ll>mp;
+    int n,target;
+    cin >> n >> target;
+    vector<pair<int,int>>p;
     for(int i=0; i<n; i++){
-        cin >> v[i];
-        mp[v[i]] = i+1;
+        int a; cin >> a;
+        p.push_back({a , i});
     }
-    for(int i=0; i<n; i++){
-        ll tmp = target - v[i];
-        if(mp.count(tmp) and mp[tmp] != i+1){
-            cout<<(i+1)<<" "<<mp[tmp]<<endl;
+    sort(p.begin() , p.end());
+    int l = 0, r=n-1;
+    while(l < r){
+        int sum = p[l].first+p[r].first;
+        //cout<<p[l].first<<" "<<p[r].first<<" "<<sum<<endl;
+        if(sum == target){
+            cout<<p[r].second+1<<" "<<p[l].second+1<<'\n';
             return 0;
         }
+        else if(sum > target){
+            r--;
+        }
+        else{
+            l++;
+        }
     }
-    cout<<"IMPOSSIBLE"<<endl;
+    cout<<"IMPOSSIBLE"<<'\n';
 }

@@ -1,46 +1,38 @@
-//  IN THE NAME OF ALLAH
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef pair<int, int> pii;
-#define slow ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(v) v.begin(),v.end()
-#define endl '\n'
-#define pb push_back
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-#define int long long
-#define double long double;
 
-void solve() {
+void sokal_8tay_class(){
+	int n ; cin >> n;
+	if(n <= 4){
+		cout<<-1<<endl;
+		return;
+	}
+	vector<int>odd;
+	vector<int>even;
+	
+	for(int i = 1; i <= n; i++){
+		if(i % 2 == 0) even.push_back(i);
+		else odd.push_back(i);
+	}
+	auto it1 = find(odd.begin() , odd.end() , 5);
+	if(it1 != odd.end()){
+		odd.erase(it1);
+		odd.push_back(5);
+	}
+	auto it2 = find(even.begin() , even.end() , 4);
+	if(it2 != even.end()){
+		even.erase(it2);
+		even.insert(even.begin(),4);
+	}
+	for(auto u : odd) cout<<u<<" ";
+	for(auto u : even) cout<<u<<" ";
 
-    int n;
-    cin >> n;
-    if (n == 2 || n == 3) {
-        cout << "-1\n";
-        return;
-    }
-    vi composite;
-
-    for (int i = 2; i <= n; i += 2) {
-        composite.push_back(i);
-    }
-    for (int i = 1; i <= n; i += 2) {
-        composite.push_back(i);
-    }
-    for (int u : composite) cout << u << " ";
-    cout << endl;    
+	cout<<endl;
 }
-
-int32_t main() {
-    slow;
-    int tc;
-    cin >> tc;
-    while (tc--) {
-        solve();
+int main(){
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    int tc ; cin >> tc;
+    while(tc--){
+        sokal_8tay_class();
     }
-    return 0;
 }

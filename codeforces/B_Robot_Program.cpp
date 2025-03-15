@@ -9,16 +9,17 @@ int solve(){
     int t=0;
     int cnt =0;
     while(1){
-        for(int i=n-1; i>=0; i--){
-            if(s[i] == 'L') x--;
+        for(int i=0; i<n; i++){
+            if(s[i]=='L') x--;
             else x++;
-           /// cout<<x<<" ";
-            if(x == 0){
-                cnt++;
-            }
             t++;
-            if(t == k){
-                return cnt;
+            if(x==0){
+                cnt++;
+                break;
+            }
+            if(t==k){
+                cout<<cnt<<endl;
+                return 0;
             }
         }
     }

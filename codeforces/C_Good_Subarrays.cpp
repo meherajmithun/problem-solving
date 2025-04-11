@@ -1,34 +1,27 @@
-//  IN THE NAME OF ALLAH
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef pair<int, int> pii;
-#define slow ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(v) v.begin(),v.end()
-#define endl '\n'
-#define pb push_back
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
 #define int long long
+#define print(x) cout<<x<<'\n'
 
-void solve() {
-    int n ; cin >> n;
-    string s ; cin >> s;
-    int cnt = 0;
-    int l = 0 , r = 0;
-    sort(all(s));
-    cout<<s<<endl;
-}
+int32_t main(){
+    int tc; cin>>tc;
+    while(tc--){
+        int n; cin>>n;
+        vector<int>pre(n+1);
+        for(int i=1; i<n+1; i++){
+            char c; cin>>c;
+            int tmp = c - '0';
+            pre[i] = pre[i-1] + tmp;
+        }
+        int ans = 0;
+        map<int,int>mp;
+        for(int i=0; i<n+1; i++){
+            int k = pre[i] - i;
 
-int32_t main() {
-    slow;
-    int tc;
-    cin >> tc;
-    while (tc--) {
-        solve();
+            // cout<<k<<endl;
+            ans += mp[k];
+            mp[k]++;
+        }
+        print(ans);
     }
-    return 0;
 }

@@ -5,13 +5,13 @@ using namespace std;
 int a,b,c,k;
 int call(int n){
     int x = (a*n*n) + (b*n) + c;
-    if(x <= k) return 0;
+    if(x < k) return 0;
     else return 1;
 }
-
+ 
 void solve(){
     cin>>a>>b>>c>>k;
-    int l=0,r=k,ans=-1;
+    int l=0 ,r=1e5,ans=-1;
     while(l <= r){
         int mid = (l+r)/2;
         if(call(mid) == 0){
@@ -21,9 +21,9 @@ void solve(){
             r = mid-1;
         }
     }
-   cout<<ans<<endl;
+   cout<<l<<endl;
 }
-
+ 
 int32_t main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);

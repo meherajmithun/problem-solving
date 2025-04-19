@@ -1,50 +1,46 @@
-/*
-  IN THE NAME OF ALLAH
-  Author: Meheraj Mithun
-  Bangladesh University Of Business and Technology
-*/
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
-typedef vector<pii> vii;
-typedef vector<pll> vll;
-#define fastIO ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(v) v.begin(),v.end()
-#define endl '\n'
-#define pb push_back
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-#define int long long
-
-void solve() {
-   int n ; cin >> n;
-   set<ll>st;
-
-   bool done = 0;
-   for(int i = 1; i*i*i < n; i++){
-
-    ll pera = (i * i * i);
-    st.insert(pera);
-
-    if(st.count(n - pera) == 1){
-        done = 1;
-        yes;
-        return ;
-    }
-   }
-   no;
+#define ll long long
+#define print(x) cout << x << " ";
+ll n,a; 
+int call(ll idx){
+    ll baki = n-a;
+    if(idx*idx*idx <= baki) return 0;
+    else return 1;
 }
 
-int32_t main() {
-    fastIO;
-    int T;
-    cin >> T;
-    while (T--) {
+void solve(){
+    cin>>n;
+    if(n == 1){
+        cout<<"NO"<<endl;
+        return;
+    }
+    for(ll i=1; (i*i*i) <= n; i++){
+        a = i*i*i;
+        ll l = 1,r=1e4 , val=-1;
+        while(l <= r){
+            ll mid = (l+r)/2;
+            if(call(mid) == 0){
+                val = mid;
+                l = mid+1;
+            }
+            else{
+                r = mid-1;
+            }
+        }
+        if(a + (val*val*val) == n){
+            cout<<"YES"<<endl;
+            return;
+        }
+    }
+    cout<<"NO"<<endl;
+}
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
+    int tc; cin>>tc;
+    while(tc--){
         solve();
     }
-    return 0;
 }

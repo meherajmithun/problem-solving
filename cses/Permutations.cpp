@@ -2,19 +2,24 @@
 using namespace std;
 
 int main(){
-    string s; cin>>s;
-    int n = (int)s.size();
-    map<char,int>mp;
-    int mx = 1, r=0,l=0;
-    while(r < n){
-        mp[s[r]]++;
-        while(s[r] == s[r+1] and r < n){
-            mp[s[r]]++;
-            r++;
-        }
-        mx = max(mx,mp[s[r]]);
-        mp.erase(s[r]);
-        r++;
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int n; cin>>n;
+    if(n == 1){
+        cout<<n;
+        return 0;
     }
-    cout<<mx<<endl;
+    if(n<4){
+        cout<<"NO SOLUTION"<<endl;
+        return 0;
+    }
+
+    for(int i=2; i<=n; i+=2){
+        cout<<i<<" ";
+    }
+    for(int i=1; i<=n; i+=2){
+        cout<<i<<" ";
+    }
+
 }

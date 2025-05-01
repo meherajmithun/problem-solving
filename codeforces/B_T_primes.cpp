@@ -1,30 +1,50 @@
-#include<bits/stdc++.h>
+//  IN THE NAME OF ALLAH
+
+#include <bits/stdc++.h>
 using namespace std;
 #define int long long
+#define endl '\n'
+#define print(x) cout<<x<<'\n'
+#define mod 1000000007
 
-int32_t main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-
-    int query; cin>>query;
-    while(query--){
-        int n; cin>>n;
-        double a = sqrt(n);
-        if(n == 1){
-            cout<<"NO"<<endl;
-        }
-        else if(a-(int)a) cout<<"NO"<<endl;
-        else{
-            int b = (int)a;
-            bool gese = true;
-            for(int i=2; i*i <= b; i++){
-                if(b%i == 0){
-                    gese = false;
-                    cout<<"NO"<<endl;
-                    break;
-                }
-            }
-            if(gese) cout<<"YES"<<endl;
+bool prime(int n){
+    if(n == 1) return false;
+    for(int i=2; i*i <= n; i++){
+        if(n%i == 0){
+            return false;
         }
     }
+    return true;
+}
+
+bool root(int n){
+    int k = sqrt(n);
+    if(k*k == n){
+        return true;
+    }
+    return false;
+}
+
+void solve() {
+    int n; cin>>n;
+    while(n--){
+        int a; cin>>a;
+        if(prime(sqrt(a)) and root(a)){
+            cout<<"YES"<<endl;
+        }
+        else{
+            cout<<"NO"<<endl;
+        }
+    }
+}
+
+int32_t main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+      
+    int tc = 1; //cin >> tc;
+    while (tc--) {
+        solve();
+    }
+    return 0;
 }

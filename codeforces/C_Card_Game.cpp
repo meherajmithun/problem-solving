@@ -1,45 +1,54 @@
+//  IN THE NAME OF ALLAH
+
 #include <bits/stdc++.h>
 using namespace std;
+#define int long long
+#define endl '\n'
+#define print(x) cout<<x<<'\n'
+#define INT_MAX LLONG_MAX
+#define INT_MIN LLONG_MIN
+#define mod 1000000007
 
-int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        string s;
-        cin >> s;
+void solve() {
+    int n; cin>>n;
+    string s; cin>>s;
+    if(s == "AB"){
+        cout<<"Alice"<<endl;
+        return;
+    }
+    if(s == "BA"){
+        cout<<"Bob"<<endl;
+        return;
+    }
+    int a=0,b=0;
+    for(int i=0; i<n; i++){
+        if(s[i] == 'A') a++;
+        else b++;
+    }
+    if(b<2) {
+        cout<<"Alice"<<endl;
+        return;
+    }
 
-        // Determine who has card 1 and card n
-        bool alice_has_1 = (s[0] == 'A');
-        bool bob_has_1 = (s[0] == 'B');
-        bool alice_has_n = (s[n - 1] == 'A');
-        bool bob_has_n = (s[n - 1] == 'B');
+    if(a<2) {
+        cout<<"Bob"<<endl;
+        return;
+    }
 
-        // If Alice has card 1 and Bob has card n, Alice wins
-        if (alice_has_1 && bob_has_n) {
-            cout << "Alice" << endl;
-        }
-        // If Bob has card 1 and Alice has card n, Bob wins
-        else if (bob_has_1 && alice_has_n) {
-            cout << "Bob" << endl;
-        }
-        // Otherwise, compare the smallest card each player has
-        else {
-            int alice_min = INT_MAX, bob_min = INT_MAX;
-            for (int i = 0; i < n; i++) {
-                if (s[i] == 'A') {
-                    alice_min = min(alice_min, i + 1);
-                } else {
-                    bob_min = min(bob_min, i + 1);
-                }
-            }
-            if (alice_min < bob_min) {
-                cout << "Alice" << endl;
-            } else {
-                cout << "Bob" << endl;
-            }
-        }
+    else if((s[0] == 'A' or s[n-2] == 'A') and s[n-1] == 'A'){
+        cout<<"Alice"<<endl;
+        return;
+    }
+    else cout<<"Bob"<<endl;
+}
+
+int32_t main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+      
+    int tc = 1; cin >> tc;
+    while (tc--) {
+        solve();
     }
     return 0;
 }

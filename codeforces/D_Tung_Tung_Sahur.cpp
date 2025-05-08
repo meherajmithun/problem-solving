@@ -1,47 +1,61 @@
-#include <iostream>
-#include <string>
-#include <vector>
-
+#include<bits/stdc++.h>
 using namespace std;
 
-bool solve() {
-    string p, s;
-    cin >> p >> s;
+int main(){
+    int tc; cin>>tc;
+    while(tc--){
+        string s,p; cin>>s>>p;
+        vector<int>s1,s2;
+        int n = (int)s.size();
+        int m = (int)p.size();
+        //if(n == 1 or m == 1){
+            if(s[0] != p[0]){
+                cout<<"NO\n";
+                continue;
+            }
+        
+        if(m>(n*2) or m<n){
+            cout<<"NO\n";
+            continue;
+        }
 
-    int n = p.length();
-    int m = s.length();
+        int a = 1;
+        for(int i=1; i<n; i++){
+            if(s[i-1] == s[i]){
+                a++;
+            }
+            else{
+                s1.push_back(a);
+                a = 1;
+            }
+        }
+        s1.push_back(a);
+        a  = 1;
+        for(int i=1; i<m; i++){
+            if(p[i-1] == p[i]){
+                a++;
+            }
+            else{
+                s2.push_back(a);
+                a = 1;
+            }
+        }
+        s2.push_back(a);
 
-    if (m < n) {
-        return false;
+        if(s1.size() != s2.size()){
+            cout<<"NO\n";
+            continue;
+        }
+        bool f = 0;
+        for(int i=0; i<s1.size(); i++){
+            int k = s1[i];
+            int l = s2[i];
+            if(k>l or l>(k*2)){
+                f = 1;
+                break;
+            }
+        }
+        if(!f) cout<<"YES\n";
+        else cout<<"NO\n";
     }
-
-    int s_ptr = 0;
-    for (int p_ptr = 0; p_ptr < n; ++p_ptr) {
-        if (s_ptr >= m) {
-            return false;
-        }
-        if (p[p_ptr] == s[s_ptr]) {
-            s_ptr++;
-        } else {
-            return false;
-        }
-        if (s_ptr < m && s[s_ptr] == p[p_ptr]) {
-            s_ptr++;
-        }
-    }
-
-    return s_ptr == m;
-}
-
-int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        if (solve()) {
-            cout << "YES" << endl;
-        } else {
-            cout << "NO" << endl;
-        }
-    }
-    return 0;
 }

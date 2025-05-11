@@ -20,7 +20,7 @@ void solve() {
     vector<int> v2 = {v[1]};
     //cout<<v2[0]<<endl;
     while(r<=n){
-        int tmp = *(v.begin()+1);
+        int tmp = *(v.begin()+1);       
         cout<<tmp<<" ";
         r++;
     }

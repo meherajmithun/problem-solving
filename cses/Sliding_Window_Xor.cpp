@@ -9,34 +9,30 @@ using namespace std;
 
 void solve() {
     int n,k; cin>>n>>k;
-    int x,a,b,c; cin>>x>>a>>b>>c;
+    int x,a,b,c; 
+    cin>>x>>a>>b>>c;
     vector<int>v(n);
     v[0] = x;
     for(int i=1; i<n; i++){
-        v[i] = ((v[i-1]*a) + b) % c;
+        v[i] = ((v[i-1]*a) + b)%c;
     }
-    // for(auto u : v) cout<<u<<" ";
-    // cout<<endl;
-    vector<int>minimum;
-    int mn = INT_MAX;
-    multiset<int>ms;
-    for(int i=0; i<k; i++) ms.insert(v[i]);
-    // cout<<mn;
+    int val = 0;
+    for(int i=0; i<k; i++) val ^= v[i];
+    vector<int>Xor;
     int l=0,r=k-1;
     while(r<n){
-       // cout<<mn<<" ";
-        minimum.push_back(*(ms.begin()));
-        ms.erase(ms.find(v[l]));
-        l++;
+        Xor.push_back(val);
         r++;
-        ms.insert(v[r]);
+        val = val^v[r];
+        val = val^v[l];
+        l++;
     }
-    // for(auto u : minimum) cout<<u<<" ";
     int ans = 0;
-    for(auto u : minimum){
-        ans ^= u;
+    for(auto u : Xor){
+        ans = ans^u;
     }
     print(ans);
+
 
 }
 

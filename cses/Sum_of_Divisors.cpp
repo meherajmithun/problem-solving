@@ -1,40 +1,15 @@
-// IN THE NAME OF ALLAH
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-#define int long long
-const int MOD = 1e9 + 7;
+#define ll long long
 
-// Function to compute (a * b) % mod safely
-int modmul(int a, int b) {
-    return (a % MOD) * (b % MOD) % MOD;
-}
+int main(){
+    ll n; cin>>n;
+    ll sum = 0;
+    for(int i=1; (i*i) <= n; i++){
+        ll t1 = i * (n / i - i + 1); 
 
-// Function to compute sum of integers from l to r modulo MOD
-int range_sum(int l, int r) {
-    int cnt = r - l + 1;
-    int total = (cnt % MOD) * ((l + r) % MOD) % MOD;
-    return modmul(total, (MOD + 1) / 2); // divide by 2 modulo MOD
-}
-
-void solve() {
-    int n;
-    cin >> n;
-    int ans = 0;
-
-    for (int i = 1, j; i <= n; i = j + 1) {
-        int val = n / i;
-        j = n / val;
-        int s = range_sum(i, j); // sum of d from i to j
-        ans = (ans + modmul(val, s)) % MOD;
+        ll t2 = (((n / i) * (n / i + 1)) / 2) - ((i * (i + 1)) / 2); 
+        sum += t1 + t2;
     }
-
-    cout << ans << '\n';
-}
-
-int32_t main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    solve();
-    return 0;
-}
+    cout<<sum;
+} 

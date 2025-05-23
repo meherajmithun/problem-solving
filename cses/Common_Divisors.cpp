@@ -1,20 +1,27 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-const int mx = 1e+123;
-int cnt[mx];
+#define ll long long
+const int MAX = 1e6 + 1;
 
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-    for(int i=1; i<=mx; i++){
-        for(int j=i+1; j<=lim; j+=i) {
-            cnt[j]++;
-        }
+    int n; cin >> n;
+    vector<int> freq(MAX, 0);
+    for(int i = 0; i < n; i++){
+        int a; cin >> a;
+        freq[a]++;
     }
-    int n; cin>>n;w
-    while(n--){
-        int a; cin>>a;
-        cout<<cnt[a]<<endl;
+
+    for(int g = MAX - 1; g >= 1; g--){
+        int count = 0;
+        for(int j = g; j < MAX; j += g){
+            count += freq[j];
+        }
+        if(count > 1){
+            cout << g;
+            return 0;
+        }
     }
 }

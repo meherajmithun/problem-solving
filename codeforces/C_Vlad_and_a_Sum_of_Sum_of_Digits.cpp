@@ -2,49 +2,36 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef pair<int, int> pii;
-#define slow ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(v) v.begin(),v.end()
-#define nl '\n'
-#define pb push_back
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-//#define int long long
-#define double long double;
-//vector<int>v;
+#define int long long
+#define endl '\n'
+#define print(x) cout<<x<<'\n'
+#define mod 1000000007
+const int mx = 1e5+123;
+vector<int>v;
 
-void call(vector<int>v,int n){
-    int j = 1;
-    for(int i = 1; i <= n; i++){
-        v.pb(j);
-        if(j == 9){
-            j = 0;
+void pre_calculate(){
+    v.push_back(0);
+    for(int i=1; i<=1e6+123; i++){
+        int tmp = i,sum = 0;
+        
+        while(tmp>0){
+            sum += (tmp%10);
+            tmp /= 10;
         }
-        j++;
+        v.push_back(v[i-1]+sum);
     }
-    ///cout<<endl;
-    // for(auto u : v) cout<<u<<" ";
-    // cout<<endl;
-    int sum = 0;
-    for(int i = 0; i < n; i++){
-        sum += v[i];
-    }   
-    cout<<sum<<endl;
 }
 
 void solve() {
-    int n ; cin >> n;
-    vi v;
-    call(v,n);
+    int n; cin>>n;
+    print(v[n]);
 }
 
 int32_t main() {
-    slow;
-    int tc;
-    cin >> tc;
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);     
+    int tc = 1; cin >> tc;
+    pre_calculate();
     while (tc--) {
         solve();
     }

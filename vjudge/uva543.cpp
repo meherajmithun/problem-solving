@@ -1,47 +1,37 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define int long long
-const int N = 1e8+123;
-int n;
-bitset<N>isprime;
-// isprime[i] = 1 --> prime
-// isprime[i] = 0 --> Not prime
-int32_t main(){
-    while(1){
-        if(n == 0) break;
-        cin>>n;
-        for(int i = 3; i <= n; i += 2){
-            isprime[i] = 1;
-        }
-        isprime[2] = 1;
+#define endl '\n'
+const int mx = 1e7+123;
+bitset<mx+12>isprime;
 
-        for(int i = 3; i <= sqrt(n); i += 2){
-            if(isprime[i]){
-                for(int j = (i * i); j <= n; j += (2 * i)){
-                    isprime[j] = 0;
-                }
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    
+    for(int i=3; i<=mx; i+=2){
+        isprime[i] = 1;
+    }
+    isprime[2] = 1;
+    for(int i=3; (i*i)<=mx; i+=2){
+        if(isprime[i]){
+            for(int j=i*i; j<=mx; j+=(2*i)){
+                isprime[j] = 0;
             }
         }
-        vector<int>prime;
-        prime.push_back(2);
-        for(int i = 3; i <= n; i += 2){
-            if(isprime[i]){
-                prime.push_back(i);
-            }
-        }
-        int l=0,r=prime.size()-1;
-        while(l<r){
-            if(prime[l]+prime[r] == n){
-                cout<<n<<" = "<<prime[l]<<" + "<<prime[r]<<endl;
+    }
+    int n;
+    while(true){
+        cin>>n;
+        if(n == 0) return 0;
+        bool fl = 0;
+        for(int i=2; i<=n; i++){
+            if(isprime[i] and isprime[n-i]){
+                cout<<n<<" = "<<i<<" + "<<n-i<<endl;
+                fl = 1;
                 break;
             }
-            else if(prime[l]+prime[r] > n){
-                r--;
-            }
-            else{
-                l++;
-            }
         }
+        if(!fl) cout<<"Goldbach's conjecture is wrong."<<endl;
     }
 
 }

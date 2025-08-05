@@ -25,14 +25,23 @@ void find_divisor(int n){
     }
     cout<<divisor.size()<<" "<<sum<<" "<<multiple;
 }
-
+int modulo(int a,int b){
+    if(b == 0) return 1;
+    int k = modulo(a,b/2);
+    if(b&1){
+        return (a*((k*k)%mod))%mod;
+    }
+    return (k*k)%mod;
+}
 void solve() {
     int n; cin>>n;
     int num = 1;
     while(n--){
         int a,b; cin>>a>>b;
-        num *= (a*b);
+        num *= (modulo(a,b)%mod);
+        num %= mod;
     }
+    //print(num);
     find_divisor(num);
 }
 

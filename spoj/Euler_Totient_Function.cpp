@@ -44,11 +44,11 @@ int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     sieve();
-    while(1){
+    int tc; cin>>tc;
+    while(tc--){
         ll n; cin>>n;
-        if(n == 0) break;
         if(n == 1){
-            cout<<"0\n";
+            cout<<"1\n";
         }
         else euler(n);
     }

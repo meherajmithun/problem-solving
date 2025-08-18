@@ -12,22 +12,32 @@ int dy[] = {+1, -1, 0, 0};
 // int dy[] = {0, +1, 0, -1, +1, -1, +1, -1};
 
 void solve() {
-    int n,d; cin>>n>>d;
+    int n,k; cin>>n>>k;
     vector<int>v(n);
     for(auto &u : v) cin>>u;
-    sort(v.begin() , v.end());
-    int cnt = 0,mx = v[n-1];
-    while(n > 0){
-        mx = v[n-1];
-        int k = d-mx;
-        int lagbe = k/mx;
-        if(k%mx != 0) lagbe++;
-        n -= lagbe+1;
-        cnt++;
+    sort(v.rbegin() , v.rend());
+    // for(auto u : v) cout<<u<<" "; cout<<endl;
+    int ans = 0,j=n-1;
+    for(int i=0; i<v.size(); i++){
+        int a = v[i];
+        //cout<<ans<<" ";
+        if(a>k) {
+            ans++;
+            continue;
+        }
+        int t = k/a;
+        if(t == n){
+            break;
+        }
+        while(j>i and a <= k){
+            a += v[i];
+            j--;
+        }
+        if(a>k){
+            ans++;
+        }
     }
-    cout<<n<<" ";
-    if(n<0) cnt--;
-    print(cnt);
+    print(ans);
 }
 
 int32_t main() {

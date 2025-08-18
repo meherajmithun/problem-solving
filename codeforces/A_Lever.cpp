@@ -17,20 +17,39 @@ void solve() {
     for(auto &u : a) cin>>u;
     for(auto &u : b) cin>>u;
     int ans = 0;
-    for(int i=0; i<n; i++){
-        if(a[i] > b[i]) {
-            a[i]--;
-            //i = 0;
-            ans++;
+    while(1){
+        ans++;
+        bool f = 0;
+        for(int i=0; i<n; i++){
+            if(a[i] > b[i]){
+                a[i]--;
+                f = 1;
+            }
+            if(a[i] < b[i]){
+                a[i]++;
+                f = 1;
+            }
         }
-        else if(a[i] < b[i]){
-            a[i]++;
-            ans++;
-        }
-        else if(a[i] == b[i]) break;
-        //ans++;
-        if(i == n-1) i =0;
+        if(f == 0) break;
     }
+    // for(int i=0; i<n; i++){
+    //     if(a[i] > b[i]){
+    //         int cnt = 0;
+    //         while(a[i]>b[i]){
+    //             a[i]--;
+    //             cnt++;
+    //         }
+    //         ans = max(ans,cnt);
+    //     }
+    //     if(a[i] < b[i]){
+    //         int cnt = 0;
+    //         while(a[i] < b[i]){
+    //             a[i]++;
+    //             cnt++;
+    //         }
+    //         ans = max(ans,cnt);
+    //     }
+    // }
     print(ans);
 }
 

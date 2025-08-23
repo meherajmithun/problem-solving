@@ -1,49 +1,39 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include<bits/stdc++.h>
 #define int long long
+#define endl '\n'
+using namespace std;
 
-int gcd(int a, int b) {
-    if (b == 0) return a;
-    return gcd(b, a % b);
-}
+void solve(){
+    int n; cin>>n;
+    vector<int>v(n);
+    int mn = LLONG_MAX,idx = 0;
 
-int32_t main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; ++i) {
-            cin >> a[i];
-        }
-        sort(a.begin(), a.end());
-        bool possible = false;
-        // Check each unique element as candidate for min_first and gcd_second
-        for (int i = 0; i < n; ++i) {
-            int x = a[i];
-            vector<int> second;
-            for (int j = 0; j < n; ++j) {
-                if (a[j] % x == 0) {
-                    second.push_back(a[j]);
-                }
-            }
-            if (second.size() < n) { // Ensure first subset is non-empty
-                int gcd_second = second[0];
-                for (size_t k = 1; k < second.size(); ++k) {
-                    gcd_second = gcd(gcd_second, second[k]);
-                }
-                if (gcd_second == x) {
-                    possible = true;
-                    break;
-                }
-            }
-        }
-        if (possible) {
-            cout << "Yes\n";
-        } else {
-            cout << "No\n";
+    for(int i=0; i<n; i++){
+        cin>>v[i];
+        if(mn>v[i]){
+            idx = i;
+            mn = v[i];
         }
     }
-    return 0;
+    //for(auto u : v) cout<<u<<" "; cout<<endl;
+    int gcd = 0;
+    for(int i=0; i<n; i++){
+        if(i != idx and v[i]%v[idx] == 0){
+            gcd = __gcd(gcd,v[i]);
+            //cout<<gcd<<" ";
+        }
+    }
+    if(gcd == v[idx]) cout<<"YES\n";
+    else cout<<"NO\n";
+}
+
+
+int32_t main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    
+    int tc; cin>>tc;
+    while(tc--){
+        solve();
+    }
 }

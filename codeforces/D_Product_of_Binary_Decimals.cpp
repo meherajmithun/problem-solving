@@ -1,68 +1,108 @@
-//  IN THE NAME OF ALLAH
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef pair<int, int> pii;
-#define slow ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define all(v) v.begin(),v.end()
-#define nl '\n'
-#define pb push_back
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-#define int long long
-#define double long double;
 
-void solve() {
-    string s ; cin >> s;
-    int n = s.size();
-    bool visit = true;
-    for(int i = 0; i < n; i++){
-        cout<<s<<endl;
-        if(s[i] != '1' || s[i] != '0'){
-            int x = stoi(s);
-            x = x / 11;
-            s = to_string(x);
-            n = s.size();
-            i = 0;
-            visit = true;
-            for(int j = 0; j < n; j++){
-                if(s[j] != '0' || s[j] != '1'){
-                    visit = false;
+vector<int>all_divisor(int n){
+    vector<int>divisor;
+    for(int i=1; (i*i) <= n; i++){
+        if(n%i == 0){
+            int a = i;
+            bool bl = 1;
+            while(a>0){
+                int k = a%10;
+                if(k>1){
+                    bl = 0;
                     break;
                 }
-            }   
-            if(visit){
-                yes;
-                return;
+                a /= 10;
             }
-
-
-
-
-
-
-
-
-
-
-
-            
+            if(bl) divisor.push_back(i);
+            if(n/i != i) {
+                int a = n/i;
+                bool bl = 1;
+                while(a>0){
+                    int k = a%10;
+                    if(k>1){
+                        bl = 0;
+                        break;
+                    }
+                    a /= 10;
+                }
+                if(bl) divisor.push_back(n/i);
+            }
         }
-         cout<<s<<endl;
-    }   
-    //cout<<s<<endl;
-    no;
+    }
+    sort(divisor.begin() , divisor.end());
+    // divisor.erase(divisor.begin());
+    // divisor.erase()
+    if(divisor[0] == 1){
+        divisor.erase(divisor.begin());
+    }
+    return divisor;
 }
 
-int32_t main() {
-    slow;
-    int tc;
-    cin >> tc;
-    while (tc--) {
+void solve(){
+    int n; cin>>n;
+    bool f = 0;
+    int a = n;
+    while(n>0){
+        int a = n%10;
+        if(a>1){
+            f = 1;
+            break;
+        }
+        n /= 10;
+    }
+    if(!f){
+        cout<<"YES\n";
+        return;
+    }
+
+    vector<int>div = all_divisor(a);
+    if(div.size() == 0){
+        cout<<"NO\n";
+        return;
+    }
+
+    //for(auto u : div) cout<<u<<" " ; cout<<endl;
+
+    while(a>0){
+        f = 0;
+        for(int i=0; i<div.size(); i++){
+            if(a%div[i] == 0){
+                a /= div[i];
+                f = 1;
+            }
+        }
+        if(f == 0) break;
+    }
+    if(a == 0){
+        cout<<"YES\n";
+        return;
+    }
+    n = a;
+    f = 0;
+    while(n>0){
+        int a = n%10;
+        if(a>1){
+            f = 1;
+            break;
+        }
+        n /= 10;
+    }
+    if(!f){
+        cout<<"YES\n";
+        return;
+    }
+    cout<<"NO\n";
+}
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    int tc; cin>>tc;
+    int c = 1;
+    while(tc--){
+        //cout<<"Case "<<c++<<" : ";
         solve();
     }
-    return 0;
 }

@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
-const int N = 1e7+123;
+const int N = 3e7+123;
 bitset<N>isprime;
 // isprime[i] = 1 --> prime
 // isprime[i] = 0 --> Not prime
@@ -26,14 +26,15 @@ void sieve(){
             prime.push_back(i);
         }
     }
-    //for(auto u : prime) cout << u << " ";
 }
 
 void solve(){
-    int d; cin>>d;
-    int it = *upper_bound(prime.begin() , prime.end(),d);
-    int it2 = *upper_bound(prime.begin() , prime.end(),it+d-1);
-    cout<<it*it2<<endl;
+    int n,m; cin>>n>>m;
+    int cnt = 0;
+    for(int i=n; i<=m; i++){
+        if(isprime[i]) cnt++;
+    }
+    cout<<cnt<<"\n";
 }
 
 int32_t main(){

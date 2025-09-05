@@ -10,43 +10,39 @@ int dx[] = {0, 0, +1, -1};
 int dy[] = {+1, -1, 0, 0};
 // int dx[] = {+1, 0, -1, 0, +1, +1, -1, -1};
 // int dy[] = {0, +1, 0, -1, +1, -1, +1, -1};
-const int mx = 1e7+123;
-vector<int>odd;
-void call(){
-  for(int i=1; i<=mx; i+=2){
-    odd.push_back(i);
-  }
-}
 
 void solve() {
-    int n,k; cin>>n>>k;
-    int sum = 0;
-    int sz = odd.size();
-    int limit = min(sz,k);
-    // for(int i=0; i<limit; i++){
-    //   sum += odd[i];
-    // }
-    sum = (k*k);
-    if(sum>n){
-      cout<<"NO\n";
+    int n; cin>>n;
+    if(n == 1){
+        cout<<"2\n";
+        return;
+    } 
+    if(n == 2){
+        cout<<3<<endl;
+        return;
     }
-    else if((n&1) and !(k&1)){
-      cout<<"NO\n";
-    }
-    else if(!(n&1) and (k&1)){
-      cout<<"NO\n";
-    }
-    else{
-      cout<<"YES\n";
+    if(n&1) n+=2;
+    else n++;
+    while(1){
+        bool f= 0;
+        for(int i=2; i<=sqrt(n); i++){
+            if(n%i == 0){
+                f=1;
+                break;
+            }
+        }
+        if(!f){
+            cout<<n<<endl;
+            return;
+        }
+        n += 2;
     }
 }
-
-//1 3 5 7 9 11 13 15
 
 int32_t main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    call();
+
     int tc = 1; cin >> tc;
     while (tc--) {
         solve();

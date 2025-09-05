@@ -6,8 +6,6 @@ using namespace std;
 void solve(){
     string s,s2;
     cin>>s>>s2;
-    string s3 = s;
-    string s4 = s2;
     int n = s.size();
     int ans,ans2;
     bool aiche = 1;
@@ -36,8 +34,9 @@ void solve(){
             }
         }
     }
+    
     //cout<<s<<" "<<s2<<" "<<s3<<" "<<s4<<endl;
-    // cout<<max(s,s3)<<endl<<max(s2,s4)<<endl;
+    //cout<<max(s,s3)<<endl<<max(s2,s4)<<endl;
 
     cout<<s<<endl<<s2<<endl;
 

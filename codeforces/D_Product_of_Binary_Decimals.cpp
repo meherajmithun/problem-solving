@@ -32,8 +32,7 @@ vector<int>all_divisor(int n){
         }
     }
     sort(divisor.begin() , divisor.end());
-    // divisor.erase(divisor.begin());
-    // divisor.erase()
+    
     if(divisor[0] == 1){
         divisor.erase(divisor.begin());
     }

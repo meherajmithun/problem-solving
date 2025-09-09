@@ -2,11 +2,9 @@
 using namespace std;
 #define ll long long
 
-const ll N = (ll) 3e7+123;
+const ll N = (ll) 1e3+123;
 vector<ll>prime;
 bitset<N>isprime;
-// isprime[i] = 1 --> prime
-// isprime[i] = 0 --> Not prime
 
 void sieve(){
     for(int i=3; i<=N; i+=2){
@@ -35,19 +33,20 @@ int main(){
     sieve();
     int tc; cin>>tc;
     while(tc--){
-        ll n; cin>>n;
+        int a,b; cin>>a>>b;
         int ans = 1;
-        for(int i=0; prime[i]*prime[i] <= n; i++){
+        int k = __gcd(a,b);
+        for(int i=0; prime[i]*prime[i] <= k; i++){
             int cnt = 0;
-            if(n%prime[i] == 0){
-                while(n%prime[i] == 0){
-                    n /= prime[i];
-                    cnt++;
-                }
-                ans *= (cnt+1);
+            while(k%prime[i] == 0){
+                k /= prime[i];
+                //b /= prime[i];
+                cnt++;
             }
+            ans *= (cnt+1);
         }
-        if(n>1) ans *= 2;
+        ///cout<<a<<" "<<b<<endl;
+        if(k>1 ) ans *= 2;
         cout<<ans<<endl;
     }
 }

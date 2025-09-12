@@ -20,7 +20,6 @@ int main(){
         adj[v].push_back(u);
     }
     dfs(1,0);
-    
     int mx_level=0,mx_level_node=0;
 
     for(int i=1; i<=n; i++){

@@ -32,6 +32,7 @@ int main(){
     //cout<<mx_level_node<<endl;
     level[mx_level_node] = 0;
     dfs(mx_level_node,0);
+    
     mx_level=0;
     int ep1 = mx_level_node;
     int ep2 = 0;

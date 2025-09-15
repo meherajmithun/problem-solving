@@ -11,24 +11,23 @@
 using namespace std;
 
 void solve() {
-    int n,k; cin>>n>>k;
+    int n; cin>>n;
     string s; cin>>s;
-    while(1){
-        bool f = 0;
-        for(int i=0; i<n-1; i++){
-            if(s[i] == '0' and k>0 and s[i+1] == '1'){
-                k--;
-                s[i] = '1';
-                f = 1;
-            }
+    queue<int>q;
+    int ans = 0;
+    for(int i=0; i<n; i++){
+        if(s[i] == '_' and q.empty()){
+            q.push(i);
         }
-        if(!f) break;
-    }    
-    int cnt = 0;
-    for(auto c : s) {
-        if(c == '1') cnt++;
-    }
-    cout<<cnt<<nl;
+        else if(s[i] == '(') q.push(i);
+        else if(!q.empty() and s[i] == ')' or s[i] == '_'){
+            int idx = q.front();
+            q.pop();
+            ans += (i-idx);
+        }
+    }   
+    
+    cout<<ans<<nl;
 }
 
 int32_t main() {

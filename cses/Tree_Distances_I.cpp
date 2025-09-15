@@ -32,7 +32,7 @@ int main(){
     //cout<<mx_level_node<<endl;
     level[mx_level_node] = 0;
     dfs(mx_level_node,0);
-    
+
     mx_level=0;
     int ep1 = mx_level_node;
     int ep2 = 0;
@@ -50,6 +50,9 @@ int main(){
 
     level[ep2] = 0;
     dfs(ep2,0);
+
+    for(int i=1; i<=n; i++) cout<<ans[i]<<" "; cout<<endl;
+    for(int i=1; i<=n; i++) cout<<level[i]<<" "; cout<<endl;
 
     for(int i=1; i<=n; i++){
         ans[i] = max(ans[i] , level[i]);

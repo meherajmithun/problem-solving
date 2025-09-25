@@ -10,29 +10,32 @@
 #define rall(x) (x).end(), (x).begin()
 #define print(x) cout<<x<<'\n'
 using namespace std;
-vector<int>v;
-
-int call(int i,int n,int s1,int s2){
-    if(i == n) return abs(s1-s2);
-    int a = call(i+1,n,s1+v[i],s2);
-    int b = call(i+1,n,s1,s2+v[i]);
-    return min(a,b);
-}
 
 void solve() {
-    int n; cin>>n;
-    for(int i=0; i<n; i++){
-        int a; cin>>a;
-        v.push_back(a);
+    int n,k ; cin>>n>>k;
+    vector<int>v(n);
+    for(auto &u : v) cin>>u;
+    int mex = 0,cnt=0;
+    map<int,int>mp;
+    for(auto u : v){
+        mp[u]++;
+        if(u == k) cnt++;
     }
-    int s1=0,s2=0;
-    int ans = call(0,n,s1,s2);
-    print(ans);
+    int ans = 0;
+    for(int i=0; i<k; i++){
+        if(mp[i] == 0) ans++;
+    }
+    //cout<<mex<<" "<<endl;
+    // if(mex == k and cnt == 0){
+    //     print(cnt);
+    //     return;
+    // }
+    cout<<max(cnt,ans)<<endl;
 }
 
 int32_t main() {
     fast
-    int tc = 1; //cin >> tc;
+    int tc = 1; cin >> tc;
     while (tc--) {
         solve();
     }

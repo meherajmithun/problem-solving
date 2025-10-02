@@ -13,16 +13,32 @@ using namespace std;
 
 void solve() {
     int n; cin>>n;
-    int cnt = 0;
-    for(int i=5; n/i>=1; i*=5){
-        cnt += (n/i);
-    }   
-    print(cnt);
+    int k = 1;
+    for(int i=0; i<n; i++){
+        k *= 2;
+    }
+    vector<string>ans;
+    int p =1;
+    while(k>0){
+        string s = "";
+        int zero = 0,one=0;
+        for(int i=0; i<n/2; i++){
+            s += "0";
+        }
+        for(int i=0; i<n/2; i++){
+            s += "1";
+        }
+        ans.push_back(s);
+        k /= p;
+        p++;
+    }
+    for(auto u : ans) cout<<u<<endl;
+    print(k);
 }
 
 int32_t main() {
     fast
-    int tc = 1;// cin >> tc;
+    int tc = 1; //cin >> tc;
     while (tc--) {
         solve();
     }

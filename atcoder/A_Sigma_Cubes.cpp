@@ -13,11 +13,17 @@ using namespace std;
 
 void solve() {
     int n; cin>>n;
-    int cnt = 0;
-    for(int i=5; n/i>=1; i*=5){
-        cnt += (n/i);
-    }   
-    print(cnt);
+    int ans = 0;
+    for(int i=1; i<=n; i++){
+        int sum = 1;
+        for(int j=0; j<3; j++){
+            sum *= i;
+        }
+        if(i%2 != 0) sum *= -1;
+        //cout<<sum<<" "
+        ans += sum;
+    }
+    print(ans);
 }
 
 int32_t main() {

@@ -7,22 +7,20 @@
 #define nl '\n'
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
-#define rall(x) (x).rbegin(), (x).rend()
+#define rall(x) (x).end(), (x).begin()
 #define print(x) cout<<x<<'\n'
 using namespace std;
 
 void solve() {
     int n; cin>>n;
-    int cnt = 0;
-    for(int i=5; n/i>=1; i*=5){
-        cnt += (n/i);
-    }   
-    print(cnt);
+    int a = n-2;
+    int b = (n-1)*(n-2)/2;
+    cout<<a<<" "<<b<<endl;   
 }
 
 int32_t main() {
     fast
-    int tc = 1;// cin >> tc;
+    int tc = 1; cin >> tc;
     while (tc--) {
         solve();
     }

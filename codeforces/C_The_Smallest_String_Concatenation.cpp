@@ -7,22 +7,27 @@
 #define nl '\n'
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
-#define rall(x) (x).rbegin(), (x).rend()
+#define rall(x) (x).end(), (x).begin()
 #define print(x) cout<<x<<'\n'
 using namespace std;
 
+bool cmp(string x,string y){
+    return (x+y) < (y+x);
+}
 void solve() {
     int n; cin>>n;
-    int cnt = 0;
-    for(int i=5; n/i>=1; i*=5){
-        cnt += (n/i);
-    }   
-    print(cnt);
+    vector<string>v(n);
+    for(auto &u : v) cin>>u;
+    sort(v.begin() , v.end(), cmp);
+    //for(auto u : v) cout<<u<<" "; cout<<endl;
+    string ans = "";
+    for(auto u : v) ans += u;
+    print(ans);
 }
 
 int32_t main() {
     fast
-    int tc = 1;// cin >> tc;
+    int tc = 1; ///cin >> tc;
     while (tc--) {
         solve();
     }

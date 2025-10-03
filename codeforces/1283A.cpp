@@ -1,8 +1,4 @@
-/*
-  IN THE NAME OF ALLAH
-  Author:Meheraj Hossain Mithun
-  Bangladesh Univerity Of Bussiness And Technology
-*/
+
 #include <bits/stdc++.h>
 using namespace std;
 

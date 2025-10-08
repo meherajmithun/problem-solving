@@ -1,19 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define int long long
-const int N = 1e7+123;
-bitset<N>isprime;
-// isprime[i] = 1 --> prime
-// isprime[i] = 0 --> Not prime
-vector<int>prime;
+#define ll long long
 
-bool call(int n){
-    // if(n<=3){
-    //     return 1;
-    // }
-    if(n%2 == 0 or n%3 == 0) return 0;
-    for(int i=5; i<=sqrt(n); i+=2){
-        if(n%i == 0 or n%(i+2) == 0){
+bool call(ll n){
+    if(n == 2) return 1;
+    if(n == 1 or n%2 == 0) return 0;
+    if(n == 2) return 1;
+
+    for(ll i=3; i<=sqrt(n); i+=2){
+        if(n%i == 0){
             return 0;
         }
     }
@@ -21,29 +16,20 @@ bool call(int n){
 }
 
 void solve(){
-    int n; cin>>n;
-    if(n==1){
-        cout<<2<<endl;
-        return;
-    }
-    if(n == 2){
-        cout<<3<<endl;
-        return;
-    }
-    int num = n;
-    bool mara = 1;
-    while(mara){
-        num++;
-        if(call(num)){
-            cout<<num<<endl;
+    ll n; cin>>n;
+    for(ll i=n+1; i<=n+540; i++){
+        if(call(i)){
+            cout<<i<<'\n';
             return;
         }
     }
 }
 
-int32_t main(){
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
     int tc; cin>>tc;
-    //sieve();
     while(tc--){
         solve();
     }

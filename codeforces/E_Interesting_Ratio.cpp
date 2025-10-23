@@ -1,62 +1,38 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-#define int long long
+#define ll long long
+const ll N = (ll)3e8+123;
+bitset<N>isprime;
+vector<int>prime;
 
-const int mx = 1e7 + 123;
-bool isprime[mx];
-vector<int> prime;
-
-void slow(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-}
-
-void sieve(int n) {
-    for (int i = 3; i <= n; i += 2) {
-        isprime[i] = true;
-    }
-    for (int i = 3; i * i <= n; i += 2) {
-        if (isprime[i]) {
-            for (int j = i * i; j <= n; j += i) {
-                isprime[j] = false;
+void sieve(){
+    for(int i=3; i<=N; i+=2) isprime[i]=1;
+    for(int i=3; i<=sqrt(N); i+=2){
+        if(isprime[i]){
+            for(int j=i*i; j<=N; j+=(2*i)){
+                isprime[j]=0;
             }
         }
     }
+    isprime[2]=1;
     prime.push_back(2);
-    for (int i = 3; i <= n; i += 2) {
-        if (isprime[i]) {
-            prime.push_back(i);
-        }
+    for(int i=3;i<=N; i+=2){
+        if(isprime[i]) prime.push_back(i);
     }
 }
 
-void solve(){
-    int n;  cin >> n;
-        sieve(n);
-        
+int main(){
+    sieve();
+    int tc; cin>>tc;
+    while(tc--){
+        int n; cin>>n;
         int ans = 0;
-        for (auto u  : prime) {
-            if (u > n){
-                cout<<ans<<endl;
-                return;
+        for(auto u : prime){
+            if(u>n){
+                break;
             }
-            ans += n / u;
+            ans += n/u;
         }
-        cout << ans<< '\n';
-        
-        for (int i = 0; i <= n; ++i) {
-            isprime[i] = false;
-        }
-        prime.clear();
-}
-
-
-int32_t main() {
-    slow();
-    
-    int tc; cin >> tc;
-    while (tc--) {
-        solve();
+        cout<<ans<<'\n';
     }
-    
 }

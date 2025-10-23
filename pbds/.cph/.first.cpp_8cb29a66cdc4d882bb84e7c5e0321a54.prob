@@ -1,0 +1,1 @@
+{"name":"Local: first","url":"/home/meheraj/CP/problem-solving/pbds/first.cpp","tests":[{"id":1760798867740,"input":"5\n! 5\n! 8\n? 3\n! 3\n? 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/meheraj/CP/problem-solving/pbds/first.cpp","group":"local","local":true}

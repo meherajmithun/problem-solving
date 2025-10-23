@@ -15,43 +15,38 @@ void solve(){
     int n; cin>>n;
     string s; cin>>s;
     int a=0,b=0;
-    for(int i=0; i<n; i++){
-        if(s[i] == 'a') a++;
+    for(auto u : s){
+        if(u == 'a') a++;
         else b++;
-    }
-    if(a == b){
+    }    
+    if(a == b) {
         cout<<"0\n";
         return;
     }
-    if(a == 0 or b == 0){
-        cout<<"-1\n";
-        return;
-    }
-    int t1=a,t2=b;
-    int x =0,y=0;
-    int l=0,r=0,ans = INT_MAX;
-    bool f = 0;
-    while(r<n){
-        x = 0,y=0;
-        if(s[r] == 'a') a--;
-        else b--;
-        if(a==b){
-            while(l<=r and a==b){
-               // cout<<x<<" "<<y<<endl;
-                f=1;
-                ans = min(ans,r-l+1);
-                if(s[l] == 'a') {a--;}
-                else {b--;}
-                l++;
-            }
-            a=t1,b=t2;
-            ans -= (x+y);
-        }
-        r++;
+    int ans = INT_MAX;
+    bool paise = 0;
+    int beshi = a-b;
+    int pref[n+1] = {0};
+    for(int i=1; i<=n; i++){
+        char c = s[i-1];
+        int val;
+        if(c == 'a') val = 1;
+        else val = -1;
+        pref[i] = pref[i-1]+val;
     }
     
-    if(!f) ans = -1;
-    cout<<ans<<endl;
+    map<int,int>mp;
+    mp[0] = 0;
+    for(int i=1; i<=n; i++){
+        int lagbe = pref[i]-beshi;
+        if(mp.count(lagbe)){
+            ans = min(ans,i-mp[lagbe]);
+            paise = 1;
+        }
+        mp[pref[i]] = i;
+    }
+    if(!paise or ans == n) ans = -1;
+    print(ans);
 }
 
 int32_t main(){

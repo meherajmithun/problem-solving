@@ -72,6 +72,8 @@
     "ranges": "cpp",
     "span": "cpp",
     "regex": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "bitset": "cpp",
+    "stacktrace": "cpp"
   }
 }

@@ -4,19 +4,14 @@
 using namespace std;
 #define int long long
 
-void solve() {
-    int n; 
-    cin >> n;
-    vector<int> p(n);
-    for (int i = 0; i < n; i++) cin >> p[i];
-
-    vector<int> q(n);
-    for (int i = 0; i < n; i++) {
-        q[i] = p[(i + 1) % n];  // cyclic shift by 1
+void solve(){
+    int n; cin>>n;
+    vector<int>v(n);
+    for(auto &a : v) cin>>a;
+    for(auto u : v){
+        cout<<n-u+1<<" ";
     }
-
-    for (int i = 0; i < n; i++) cout << q[i] << " ";
-    cout << "\n";
+    cout<<endl;
 }
 
 int32_t main() {

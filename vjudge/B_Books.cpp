@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-    const ll N = (ll) 3e7 + 5;
+const ll N = (ll) 3e7 + 5;
 bitset<N> isPrime;
 vector<ll> primes;
 void sieve(){

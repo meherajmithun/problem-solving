@@ -28,24 +28,19 @@ void solve(){
         print(mex); return;
     }
 
-    for(int i=0; i<n; i++){
-        int a = v[i];
-        if(mp[a]>1){
-            mp[a]--;
-            while(a<n){
-                a += x;
-                if(mp[a]==0) break;
-            }
-            if(a>n) a -= x;
-            v[i] = a;
-            mp[a]++;
-        }
+  for (int k = 0; k <= n; ++k) {
+    if (mp[k] == 0) {
+      cout << k << '\n';
+      return;
     }
-    mex = 0;    sort(all(v));
-    for(auto a : v){
-        if(a==mex) mex++;
+    if (mp[k] > 1) {
+      int extra = mp[k] - 1;
+      mp[k] = 1;
+      if (k + x <= n) {
+        mp[k + x] += extra;
+      }
     }
-    cout<<mex<<nl;   
+  } 
 }
 
 int32_t main(){

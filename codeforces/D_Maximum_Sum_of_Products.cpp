@@ -11,12 +11,34 @@
 #define print(x) cout<<x<<'\n'
 using namespace std;
 
-void solve(){   
+void solve(){
     int n; cin>>n;
     vector<int>a(n),b(n);
     for(auto &i : a) cin>>i;
     for(auto &i : b) cin>>i;
-    
+    int p1=0,p2=0;
+    int mx = -1;
+    for(int i=0; i<n-1; i++){
+        for(int j=i+1; j<n; j++){
+            int x = a[i]*b[i];
+            int y = a[j]*b[j];
+
+            int p = a[j]*b[i];
+            int q = a[i]*b[j];
+            int before = x+y;
+            int after = p+q;
+            // cout<<x<<" "<<y<<" "<<p<<" "<<q<<nl<<after<<" "<<before<<nl;
+            if(before<after and mx<abs(after-before)){
+                p1=i,p2=j;
+                mx = abs(after-before);
+            }
+        }
+    }
+    // cout<<p1<<" "<<p2<<nl;
+    swap(a[p1],a[p2]);
+    int sum = 0;
+    for(int i=0; i<n; i++) sum += (a[i]*b[i]);
+    print(sum);
 }
 
 int32_t main(){

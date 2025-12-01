@@ -13,50 +13,41 @@ using namespace std;
 
 void solve(){
     int n,k; cin>>n>>k;
-    vector<pair<int,int>>vp;
-    for(int i=0; i<n; i++){
-        int a,b; cin>>a>>b;
-        vp.push_back({a,b});
-    }   
-    sort(vp.begin() , vp.end());
-    for(auto u : vp) cout<<u.first<<" "<<u.second<<nl;
+    vector<pair<int,int>>vp(n);
+    for(auto &[a,b] : vp) cin>>a>>b;
+    sort(all(vp));
+    multiset<int>ms;
+    int i=0;
+    int t=k;
+    while(k--){ms.insert(vp[i].second); i++;}
+
     int ans = 0;
-    vector<int>mark(n+1 , 0);
-    set<pair<int,int>>st;
-    for(int i=0; i<k; i++){
-        st.insert({vp[i].first , vp[i].second});
+    for(i=t; i<n; i++){
+        int a = vp[i].first;
+        int b = vp[i].second;
+
+        int x = *(ms.begin());
+        if(x<=a) {
+            ans++;
+            ms.erase(ms.begin());
+            ms.insert(b);
+        }
+        else{
+            x = *(ms.rbegin());
+            // cout<<x<<nl;
+            if(x>b){
+                ms.erase(ms.find(x));
+                ms.insert(b);
+            }
+        }
     }
-    for(auto u : st) cout<<u.first<<" "<<u.second<<nl;
-
-    for(int i=k; i<n; i++){
-        auto it = lower_bound(st.begin() , st.end() , vp[i]);
-        if(it == st.end()) it--;
-        int u = (*it).first;
-        int v = (*it).second;
-        cout<<u<<" "<<v<<nl;
-    }
-
-    // while(k--){ 
-    //     int a = -1,cnt=0;
-    //     for(int i=0; i<n; i++){
-    //         int u = vp[i].first;
-    //         int v = vp[i].second;
-    //         if(a<=v and mark[i] == 0){
-    //             a = u;
-    //             cnt++;
-    //             mark[i] = 1;
-    //         }
-    //     }
-    //     ans += cnt;
-    // }
-   // print(ans);
-
+    cout<<ans+sz(ms)<<nl;
 
 }
 
 int32_t main(){
     fast
-    int tc = 1;// cin >> tc;
+    int tc=1;// cin >> tc;
     while(tc--){
         solve();
     }

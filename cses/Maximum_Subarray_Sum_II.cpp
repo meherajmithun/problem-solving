@@ -10,20 +10,14 @@ using namespace std;
 void solve() {
     int n,a,b;
     cin>>n>>a>>b;
-    vector<int>v(n+1);
-    for(int i=1; i<=n; i++){
+    vector<int>v(n+1),pre(n+1, 0);
+    for(int i=0; i<n; i++){
         cin>>v[i];
+        pre[i+1] = pre[i]+v[i];
     }
-    int mx = INT_MIN;
-    for(int i=1; i<=n; i++){
-        int sum=v[1],val = v[1];
-        for(int j=a; j<=b; j++){
-            sum += v[j];
-            val = max(sum,v[j]);
-            mx = max(mx,val);
-        }
-    }
-    cout<<mx<<endl;
+    // for(auto a : pre) cout<<a<<" "; cout<<endl;
+    cout<<*max_element(pre.begin() , pre.end());
+
 }
 
 int32_t main() {

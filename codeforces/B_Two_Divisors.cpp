@@ -1,54 +1,68 @@
-//  IN THE NAME OF ALLAH
+// IN THE NAME OF ALLAH
 
 #include <bits/stdc++.h>
-using namespace std;
+#define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define int long long
 #define endl '\n'
-#define print(x) cout << x << '\n'
-#define mod 1000000007
-int dx[] = {0, 0, +1, -1};
-int dy[] = {+1, -1, 0, 0};
-// int dx[] = {+1, 0, -1, 0, +1, +1, -1, -1};
-// int dy[] = {0, +1, 0, -1, +1, -1, +1, -1};
+#define nl '\n'
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define print(x) cout<<x<<'\n'
+using namespace std;
+const int N = 10007;
+vector<int>divisor[N+12];
+void harmonic(){
+    for(int i=1; i<N; i++){
+        vector<int>tmp;
+        for(int j=i; j<N; j+=i){
+            tmp.push_back(j);
+        }
+        divisor[i]=tmp;
+    }
 
-void solve() {
-    int a,b; cin>>a>>b;
-    int n = b*b;
-    if(a%2 == 0 and b%2 != 0) n = a*b;
-    if(a%2 != 0 and b%2 == 0) n = a*b;
-    if(a%2 == 1 and b%2 == 1) n = a*b;
-    
-    //if(n%a == 0) n /= a;
-    cout<<n<<" ";
-    while(1){
-        vector<int>div;
-        div.push_back(1);
-        for(int i=2; i<=sqrt(n); i++){
-            if(n%i == 0){
-                div.push_back(i);
-                if(n/i != i){
-                    div.push_back(n/i);
-                }
-            }
-        }
-        for(auto u : div) cout<<u<<" "; cout<<endl;
-        return;
-        sort(div.begin() , div.end());
-        if(div[div.size()-1] == b and div[div.size()-2] == a){
-            cout<<n<<endl;
-            return;
-        }
-        n /= a;
+    for(int i=1; i<11; i++){
+        cout<<i<<" -> ";
+        cout<<sz(divisor[i])<<nl;
     }
 }
 
-int32_t main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+void solve(){
+    int a,b; cin>>a>>b;
+    // cout<<__gcd(a,b)<<" "<<a<<" "<<b<<nl;
+    int k = a*b;
+    // cout<<k<<nl;
+    int g = __gcd(a,b);
+    int s = k;
+    if(a==1 or b==1){
+        int u = 1;
+        while(u==1){
+            s += k;
+            cout<<s<<nl;
+            // for(int i=divisor[s].size()-1; i>0; i--){
+            //     int t = divisor[s][i];
+            //     cout<<t<<" ";
+            //     if(t==b and divisor[s][i-1]==a){
+            //         cout<<s<<nl; return;
+            //     }
+            // }
+            for (int i = divisor[s].size() - 1; i >= 0; i--) {
+                cout << divisor[s][i] << " ";
+            }
 
-    int tc = 1; cin >> tc;
-    while (tc--) {
+            // cout<<s<<" ";
+            u++; if(u==100) break;
+        }
+    }
+
+
+}
+
+int32_t main(){
+    fast
+    harmonic();
+    int tc=1; cin >> tc;
+    while(tc--){
         solve();
     }
-    return 0;
 }

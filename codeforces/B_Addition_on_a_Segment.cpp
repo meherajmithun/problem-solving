@@ -12,33 +12,23 @@
 using namespace std;
 
 void solve(){
-	int x,y; cin>>x>>y;
-	int a = x/2;
-	int b = a;
-	if(x&1) b++;
-
-	// cout<<a<<" "<<b<<nl;
-
-	int m=0,n=0;
-	for(int i=1; i<=sqrt(y); i++){
-		if(y%i==0){
-			m=i; n = y/i;
-		}
-	}
-	// cout<<m<<" "<<n<<nl;
-
-	if(a>n or b<m){
-		cout<<a<<" "<<b<<nl;
-		cout<<m<<" "<<n<<nl;
-	}
-	else cout<<"-1\n";
-
+    int n; cin>>n;
+    vector<int>v(n);
+    for(auto &a : v) cin>>a;
+    int cnt = 0;
+    for(auto a : v) if(a>0) cnt++;
+    int sum = 0;
+    for(auto a : v) sum+=a;
+    int k = sum-n+1;
+    // cout<<sum<<" "<<k<<nl;
+    int ans = min(k,cnt);
+    cout<<ans<<nl;   
 }
 
 int32_t main(){
-	fast
-	int tc; cin >> tc;
-	while(tc--){
-		solve();
-	}
+    fast
+    int tc; cin >> tc;
+    while(tc--){
+        solve();
+    }
 }
